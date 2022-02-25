@@ -23,3 +23,6 @@ def lobby(request):
 def rooms(request):
     return render(request, 'rooms.html')
 
+def profile(request):
+    return render(request, 'profile.html')
+
