@@ -12,4 +12,5 @@ urlpatterns = [
     path('protocol/',views.protocol),
     path('lobby/',views.lobby),
     path('rooms/',views.rooms),
+    path('profile/',views.profile),
 ]
