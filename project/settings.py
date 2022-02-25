@@ -89,6 +89,12 @@ DATABASES = {
         },
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends..mysql',
+#         'NAME': os.path.join(BASE_DIR, 'conference'),
+#     }
+# }
 
 
 # Password validation
