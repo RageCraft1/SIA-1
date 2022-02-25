@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+	<!--HEADER-->
+	<head>
+	  <title>Automate Food Service</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+
+      <!--FOR FONT-->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+
+      <!--Bootstrap for the buttons-->
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	  
+	  <!--Style sheet Layout-->
+	  <link rel="stylesheet" href="{% static 'styles.css' %}">
+	</head>
+	
+	<body>
+        <p style="text-align:center;">
+            <img src="{% static 'project/img/junimo5.png' %}" style="width:200px; height:200px;">
+        </p>
+        <!--Homebuttons-->
+		<div class="container">
+            <nav class="navbar navbar-dark bg-dark">
+                <form class="form-inline">
+                  <button class="button" type="button">HOME</button>
+                  <button class="button" type="button">FEATURES</button>
+				  <a href="{% static 'about.html'%}">
+                  		<button class="button" type="button">ABOUT US</button>
+				  </a>
+                  <button class="button" type="button">CONTACT US</button>
+				  <button class="button" type="button">SIGN IN</button>
+				  <button class="button" type="button">SIGN UP</button>
+                </form>
+              </nav>
+              <!--Enter Web data Here-->
+			  
+              <div class="container3" >
+                <p style="font-size: large; font-family: Trirong;">
+                    <span style="float: left; font-size: large;">
+                        <b>I am Riel Jasper C. Abangan a student of CIT-University. <br>
+                        I live my life burried in workloads & passing my time <br>
+                        waiting for my inevitable death. </b>
+                    </span>
+                    <span style="float: right;">
+                        <img src="{% static 'project/img/rj.jpg' %}" style="width:125px; height:125px; border: black; border-radius: 10px;">
+                    </span>
+                </p>
+            </div>
+            <div class="container3" >
+                <p style="font-size: large; font-family: Trirong;">
+                    <span style="float: right;">
+                        <b>Hannah Mhae Hanna Lhou Hannah Mhae Hannah Lhou </b>
+                    </span>
+                    <span style="float: left;">
+                        <img src="{% static 'project/img/hannah.jpg' %}" style="width:125px; height:125px; border: black; border-radius: 10px;">
+                    </span>
+                </p>
+            </div>
+			
+		</div>
+		<!--FOOTER-->
+		<footer>
+			<p style="text-align:center; color:white;">RIEL JASPER ABANGAN, HANNAH MHAE LAQUINON CSIT327 G2-C1 AY 2021 - 2022</p>
+		</footer>
+		
+	
+	
+	</body>
+
+
+</html>
