@@ -59,6 +59,26 @@ def lobby(request):
 def rooms(request):
     return render(request, 'rooms.html')
 
+def hostParticipant(request):
+    return render(request, 'hostParticipant.html')
+
+def participant(request):
+    return render(request, 'participant/participantForm.html')
+
+def participantInfo(request):
+    return render(request, 'participant/participantInfo.html')
+
+def reservation(request):
+    return render(request, 'reservations/reservation.html')
+
+def roomsetup(request):
+    return render(request, 'reservations/roomsetup.html')
+
+def reservedinfo(request):
+    return render(request, 'reservations/reservedinfo.html')
+
+
+
 def profile(request):
     return render(request, 'profile.html')
 

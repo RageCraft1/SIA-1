@@ -163,6 +163,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
   max-height: 40px;
 }
+
 @media (max-width: 992px) {
   #header #logo img {
     max-height: 30px;
@@ -174,11 +175,11 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 .buy-tickets {
   color: #fff;
-  background: #0E3C4B;
+  background: #AF820C;
   padding: 7px 22px;
   margin: 0 0 0 15px;
   border-radius: 50px;
-  border: 2px solid #AF820C;
+  border: 2px solid  #0E3C4B;
   transition: all ease-in-out 0.3s;
   font-weight: 500;
   line-height: 1;
@@ -376,6 +377,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .navbar-mobile .getstarted, .navbar-mobile .getstarted:focus {
   margin: 15px;
+  background-color:  #ce7e00;
 }
 .navbar-mobile .dropdown ul {
   position: static;
@@ -422,7 +424,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #hero:before {
   content: "";
-  background: rgba(6,12,34);
+  background: #ce7e00;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -475,7 +477,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#0E3C4B 50%, rgba(101, 111, 150, 0.15) 52%);
+  background: radial-gradient(#0E3C4B 50%, #ce7e00 52%);
   border-radius: 50%;
   display: block;
   position: relative;
@@ -512,10 +514,10 @@ h1, h2, h3, h4, h5, h6 {
   animation-timing-function: steps;
   opacity: 1;
   border-radius: 50%;
-  border: 2px solid rgba(163, 163, 163, 0.4);
+  border: 2px solid #ce7e00;
   top: -15%;
   left: -15%;
-  background: rgba(198, 16, 0, 0);
+  background: #ce7e00;
 }
 #hero .play-btn:hover::after {
   border-left: 15px solid #0E3C4B;
@@ -598,7 +600,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #about:before {
   content: "";
-  background: rgba(13, 20, 41, 0.8);
+  background: #0E3C4B;
   position: absolute;
   bottom: 0;
   top: 0;
@@ -1090,7 +1092,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
   padding: 9px 25px;
   cursor: pointer;
-  background: #f82249;
+  background: #ce7e00;
   color: #fff;
   transition: all 0.3s ease;
   outline: none;
@@ -1098,7 +1100,7 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 50px;
 }
 #subscribe button:hover {
-  background: #e0072f;
+  background:#ce7e00;
 }
 @media (max-width: 460px) {
   #subscribe button {

@@ -15,6 +15,14 @@ urlpatterns = [
     path('protocol/',views.protocol),
     path('lobby/',views.lobby,name="lobby"),
     path('rooms/',views.rooms),
+    path('host-participant/',views.hostParticipant,name="host-participant"),
 
-    path('profile/',views.profile),
+    path('participant-form/',views.participant,name="participant"), 
+    path('participant-info/',views.participantInfo, name="participantInfo"),
+
+    path('reservation/',views.reservation,name="reservation"),
+    path('room-setup/',views.roomsetup, name="roomsetup"),
+    path('reservation-info/',views.reservedinfo, name="reservedinfo"),
+
+    path('profile/',views.profile, name="profile"),
 ]
