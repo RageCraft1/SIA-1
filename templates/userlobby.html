@@ -115,8 +115,7 @@
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 Schedules
-                            </div>
-                            <div>
+                           
                                 <p align = "right">
                                     <a type = "button" class = "btn btn-primary" id = "resId"
                                     href = "{% url 'reservationView' %}">
@@ -131,6 +130,7 @@
                                   <th scope="col" style = 'text-align:center;'>Available Rooms</th>
                                   <th scope="col" style = 'text-align:center;'>Title</th>
                                   <th scope="col" style = 'text-align:center;'>Available Time</th>
+                                  <th scope="col" style = 'text-align:center;'>Actions</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -215,6 +215,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
+              </div>
+              <div>
                         </div>
                     </div>
                 </main>
