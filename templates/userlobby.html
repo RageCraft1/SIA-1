@@ -47,13 +47,13 @@
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!"href="#" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+                        <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
                     </ul>
                 </li>
             </ul>
               <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+    aria-hidden="true" data-backdrop="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -65,7 +65,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="logout">Logout</a>
+                <a class="btn btn-primary" href="../signin">Logout</a>
             </div>
         </div>
     </div>
@@ -78,8 +78,8 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="../lobby">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <a class="nav-link active" href="../lobby"  >
+                                <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
                                 My Schedule
                             </a>
                            
@@ -128,7 +128,7 @@
                                 <thead>
                                 <tr >
                                   <th scope="col" style = 'text-align:center;'>Reservation ID</th>
-                                  <th scope="col" style = 'text-align:center;'>Available Rooms</th>
+                                  <th scope="col" style = 'text-align:center;'>Reserved Rooms</th>
                                   <th scope="col" style = 'text-align:center;'>Title</th>
                                   <th scope="col" style = 'text-align:center;'>Reserved Date</th>
                                   <th scope="col" style = 'text-align:center;'>Reserved Time</th>
@@ -174,7 +174,7 @@
                                        <div class="form-group col-md-6">
                                           <label for="title">Available Rooms</label>
                                          <select name="availRooms" id="room" class="form-control">
-                                          <option id="id-availRooms" name="r-availRooms" >{{r.availRooms}}</option>
+                                          <option type ="text" id="id-availRooms" name="availRooms" value={{r.availRooms}>
                                           <option value="Boardroom">Boardroom Style</option>
                                           <option value="Hollow">Hollow Squaire Style</option>
                                           <option value="U-Shape">U-Shape Style</option>
@@ -227,7 +227,7 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer" style="background-color: #ce7e00;">
                                     <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
                                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
                                 </div>
