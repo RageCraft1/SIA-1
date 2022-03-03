@@ -65,20 +65,22 @@ class reservationView(View):
         print(availRooms)
         title=request.POST.get("title")
         print(title)
-        availTime=request.POST.get("availTime")
-        print(availTime)
+        resDate=request.POST.get("resDate")
+        print(resDate)
+        resTime=request.POST.get("resTime")
+        print(resTime)
 
         if form.is_valid():
             availRooms=request.POST.get("availRooms")
             title=request.POST.get("title")
-            availTime=request.POST.get("availTime")
+            resDate=request.POST.get("resDate")
+            resTime=request.POST.get("resTime")
     
-        form=Reservation(availRooms=availRooms, title=title, 
-                            availTime=availTime)
+        form=Reservation(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
             
         form.save()
 
-        return redirect('userlobbyView')
+        return redirect('lobbyView')
 
 #Brings user to the homepage where he can locate most functions
 class lobbyView(View):
@@ -96,8 +98,9 @@ class lobbyView(View):
                 rid=request.POST.get("r-resId")
                 availRooms=request.POST.get("r-availRooms")
                 title=request.POST.get("r-title")
-                availTime=request.POST.get("r-availTime")
-                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, availTime=availTime)
+                resDate=request.POST.get("r-resDate")
+                resTime=request.POST.get("r-resTime")
+                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
                 print(update_Res)
 
             elif 'btnDelete' in request.POST:
