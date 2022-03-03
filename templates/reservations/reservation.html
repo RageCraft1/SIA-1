@@ -83,9 +83,16 @@
 					<form action="" method="POST" class="form" role="form">
 						{% csrf_token %}
 						  <div class="form-row">
-							<div class="form-group col-md-6">
+							<div class="form-group">
 							  <label for="title">Available Rooms</label>
-							  <input type="text" class="form-control" id="availRooms" name="availRooms"placeholder="Available Rooms">
+								<select name="availRooms" id="room" class="form-control">
+									<!-- <option style="background-color: #800000;" selected disabled >Vehicle Type</option> -->
+									<option value="Boardroom">Boardroom Style</option>
+									<option value="Hollow">Hollow Squaire Style</option>
+									<option value="U-Shape">U-Shape Style</option>
+									<option value="Classroom">Classroom Style</option>
+									<option value="Banquet">Banquet Style</option>
+								</select>
 							</div>
 							<div class="form-group col-md-6">
 							  <label for="organizer">Title</label>
@@ -94,10 +101,10 @@
 						  </div>
 						  <div class="form-group">
 							<label for="inputAddress2">Date </label>
-							<input type="date" class="form-control" id="date" name="date" placeholder="date" value="">
+							<input type="date" class="form-control" id="date" name="date" placeholder="date">
 						  </div>
 						  <div class="form-group">
-							<label for="inputAddress">Time</label>
+							<label for="Time">Time</label>
 							<select name="time" id="time" class="form-control">
 								  <option value="morning">09:00-12:00</option>
 								  <option value="afternoon">13:00-17:00</option>

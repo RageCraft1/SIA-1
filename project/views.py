@@ -9,9 +9,11 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
+#Brings User to the landing page
 def index(request):
     return render(request, 'index.html')
 
+#Signs up user by creating a superuser without admin previledge
 def signup(request):
     form = CreateUserForm()
 
@@ -31,6 +33,7 @@ def signup(request):
   #  context = {'form':form}
    # return render(request, 'signup.html', context)
 
+#Signs in User
 def signin(request):
     if request.method =='POST':
         username = request.POST.get('username')
@@ -45,10 +48,13 @@ def signin(request):
 
     return render(request, 'signin.html')
 
+#Logs User Out
 def logOutUser(request):
 	logout(request)
 	return redirect('articles:sigin')
 
+
+#Add a reservation for a room
 class reservationView(View):
     def get(self,request):
         return render(request, 'reservations/reservation.html')
@@ -59,21 +65,24 @@ class reservationView(View):
         print(availRooms)
         title=request.POST.get("title")
         print(title)
-        availTime=request.POST.get("availTime")
-        print(availTime)
+        resDate=request.POST.get("resDate")
+        print(resDate)
+        resTime=request.POST.get("resTime")
+        print(resTime)
 
         if form.is_valid():
             availRooms=request.POST.get("availRooms")
             title=request.POST.get("title")
-            availTime=request.POST.get("availTime")
+            resDate=request.POST.get("resDate")
+            resTime=request.POST.get("resTime")
     
-        form=Reservation(availRooms=availRooms, title=title, 
-                            availTime=availTime)
+        form=Reservation(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
             
         form.save()
 
-        return redirect('userlobbyView')
+        return redirect('lobbyView')
 
+#Brings user to the homepage where he can locate most functions
 class lobbyView(View):
     def get(self, request):
         reservation = Reservation.objects.all()
@@ -89,8 +98,9 @@ class lobbyView(View):
                 rid=request.POST.get("r-resId")
                 availRooms=request.POST.get("r-availRooms")
                 title=request.POST.get("r-title")
-                availTime=request.POST.get("r-availTime")
-                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, availTime=availTime)
+                resDate=request.POST.get("r-resDate")
+                resTime=request.POST.get("r-resTime")
+                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
                 print(update_Res)
 
             elif 'btnDelete' in request.POST:
@@ -102,11 +112,14 @@ class lobbyView(View):
 
         return redirect('lobbyView')
 
+#Brings user to the protocol submit page
 def protocol(request):
     return render(request, 'protocol.html')
 
+#SOME EXTRA COPY OF LOBBY
 def lobby(request):
     return render(request, 'userlobby.html')
+
 
 def rooms(request):
     return render(request, 'rooms.html')
