@@ -74,7 +74,7 @@ class reservationView(View):
 
         return redirect('userlobbyView')
 
-class userlobbyView(View):
+class lobbyView(View):
     def get(self, request):
         reservation = Reservation.objects.all()
         context = {
@@ -100,7 +100,7 @@ class userlobbyView(View):
                 res=Reservation.objects.filter(resId=rid).delete()
                 print('recorded deleted')
 
-        return redirect('userlobbyView')
+        return redirect('lobbyView')
 
 def protocol(request):
     return render(request, 'protocol.html')

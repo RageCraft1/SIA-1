@@ -13,7 +13,7 @@ urlpatterns = [
     path('logout',views.logOutUser,name ="logout_view"),
 
     path('protocol/',views.protocol),
-    path('lobby/',views.lobby,name="lobby"),
+    path('lobby/',views.lobbyView.as_view(),name="lobbyView"),
     path('rooms/',views.rooms),
     path('host-participant/',views.hostParticipant,name="host-participant"),
 
@@ -24,6 +24,5 @@ urlpatterns = [
     path('room-setup/',views.roomsetup, name="roomsetup"),
     path('reservation-info/',views.reservedinfo, name="reservedinfo"),
 
-    path('userlobby/',views.userlobbyView.as_view(),name="userlobbyView"),
     path('profile/',views.profile, name="profile"),
 ]

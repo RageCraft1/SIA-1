@@ -8,6 +8,10 @@
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="{% static 'assets2/css/styles.css' %}" rel="stylesheet" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	  
 <style type="text/css">
     .navbar{
         background-color: #134f5c;
@@ -146,7 +150,7 @@
                           <div class="modal fade" id="newModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
-                                <div class="modal-header" style="background-color:#6db33f">
+                                <div class="modal-header" style="background-color:#134f5c">
                                   <h5 class="modal-title", style="font-size: large; font-family: Trirong;">VIEW DETAILS</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -188,7 +192,7 @@
                           <div class="modal fade" id="exampleModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
-                                <div class="modal-header" style="background-color:#6db33f">
+                                <div class="modal-header" style="background-color:#134f5c">
                                   <h5 class="modal-title" id="exampleModalLabel">DELETE RECORD</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -204,8 +208,8 @@
                                   <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
                                   <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
                                 </div>
+                              </form>
                               </div>
-                            </form>
                             </div>
                           </div>
                         {% endfor %}
