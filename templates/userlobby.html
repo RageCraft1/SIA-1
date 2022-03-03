@@ -130,7 +130,8 @@
                                   <th scope="col" style = 'text-align:center;'>Reservation ID</th>
                                   <th scope="col" style = 'text-align:center;'>Available Rooms</th>
                                   <th scope="col" style = 'text-align:center;'>Title</th>
-                                  <th scope="col" style = 'text-align:center;'>Available Time</th>
+                                  <th scope="col" style = 'text-align:center;'>Reserved Date</th>
+                                  <th scope="col" style = 'text-align:center;'>Reserved Time</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -139,7 +140,8 @@
                                   <td>{{r.resId}}</td>
                                   <td>{{r.availRooms}}</td>
                                   <td>{{r.title}}</td>
-                                  <td>{{r.availTime}}</td>
+                                  <td>{{r.resDate}}</td>
+                                  <td>{{r.resTime}}</td>
                                   <td><a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
         
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
@@ -173,7 +175,11 @@
                                         </div>
                                         <div class = "row"></div>
                                           <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-availTime" placeholder="Available Time"  name="r-availTime" value ={{r.availTime}}>
+                                            <input type="text" class="form-control" id="id-resDate" placeholder="Date"  name="r-resDate" value ={{r.resDate}}>
+                                          </div>
+                                        <div class = "row"></div>
+                                          <div class = "col-sm-4">
+                                            <input type="text" class="form-control" id="id-resTime" placeholder="Time"  name="r-resTime" value ={{r.resTime}}>
                                           </div>
                                         </div>
                                     </div>
