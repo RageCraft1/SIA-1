@@ -11,6 +11,11 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+class ReservationForm(forms.ModelForm):
+    class Meta:
+        model = Reservation
+        fields = ('availRooms','title','availTime')
+
 
 
 

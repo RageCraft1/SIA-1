@@ -20,7 +20,7 @@ urlpatterns = [
     path('participant-form/',views.participant,name="participant"), 
     path('participant-info/',views.participantInfo, name="participantInfo"),
 
-    path('reservation/',views.reservation,name="reservation"),
+    path('reservation/',views.reservationView.as_view(),name="reservationView"),
     path('room-setup/',views.roomsetup, name="roomsetup"),
     path('reservation-info/',views.reservedinfo, name="reservedinfo"),
 

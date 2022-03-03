@@ -49,6 +49,30 @@ def logOutUser(request):
 	logout(request)
 	return redirect('articles:sigin')
 
+class reservationView(View):
+    def get(self,request):
+        return render(request, 'reservations/reservation.html')
+        
+    def post(self, request):
+        form = ReservationFrom(request.POST)
+        availRooms=request.POST.get("availRooms")
+        print(availRooms)
+        title=request.POST.get("title")
+        print(title)
+        availTime=request.POST.get("availTime")
+        print(availTime)
+
+        if form.is_valid():
+            availRooms=request.POST.get("availRooms")
+            title=request.POST.get("title")
+            availTime=request.POST.get("availTime")
+    
+        form=Reservation(availRooms=availRooms, title=title, 
+                            availTime=availTime)
+            
+        form.save()
+
+        return redirect('reservationView')
 
 def protocol(request):
     return render(request, 'protocol.html')
@@ -68,8 +92,8 @@ def participant(request):
 def participantInfo(request):
     return render(request, 'participant/participantInfo.html')
 
-def reservation(request):
-    return render(request, 'reservations/reservation.html')
+#def reservation(request):
+ #   return render(request, 'reservations/reservation.html')
 
 def roomsetup(request):
     return render(request, 'reservations/roomsetup.html')
