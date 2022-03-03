@@ -24,5 +24,6 @@ urlpatterns = [
     path('room-setup/',views.roomsetup, name="roomsetup"),
     path('reservation-info/',views.reservedinfo, name="reservedinfo"),
 
+    path('userlobby/',views.userlobbyView.as_view(),name="userlobbyView"),
     path('profile/',views.profile, name="profile"),
 ]

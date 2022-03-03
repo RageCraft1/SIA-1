@@ -54,7 +54,7 @@ class reservationView(View):
         return render(request, 'reservations/reservation.html')
         
     def post(self, request):
-        form = ReservationFrom(request.POST)
+        form = ReservationForm(request.POST)
         availRooms=request.POST.get("availRooms")
         print(availRooms)
         title=request.POST.get("title")
@@ -72,7 +72,35 @@ class reservationView(View):
             
         form.save()
 
-        return redirect('reservationView')
+        return redirect('userlobbyView')
+
+class userlobbyView(View):
+    def get(self, request):
+        reservation = Reservation.objects.all()
+        context = {
+            'reservation': reservation
+        }
+        return render(request,'userlobby.html', context)
+
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnUpdate' in request.POST:
+                print ('update profile button clicked')
+                rid=request.POST.get("r-resId")
+                availRooms=request.POST.get("r-availRooms")
+                title=request.POST.get("r-title")
+                availTime=request.POST.get("r-availTime")
+                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, availTime=availTime)
+                print(update_Res)
+
+            elif 'btnDelete' in request.POST:
+                print('delete button clicked')
+                
+                rid=request.POST.get("res-resId")
+                res=Reservation.objects.filter(resId=rid).delete()
+                print('recorded deleted')
+
+        return redirect('userlobbyView')
 
 def protocol(request):
     return render(request, 'protocol.html')
