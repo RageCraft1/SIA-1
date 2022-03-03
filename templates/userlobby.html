@@ -22,6 +22,7 @@
     .nav-item li{
         background-color: #ce7e00;
     }
+  
 </style>
     </head>
     <body class="sb-nav-fixed">
@@ -30,11 +31,12 @@
        
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" style="background-color:#ce7e00;" href="#!"><i class="fas fa-bars"></i></button>
+            
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
+                <div class="input-group col-md-6">
                     <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-warning" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    <!--<button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
                 </div>
             </form>
             <!-- Navbar-->
@@ -113,13 +115,12 @@
                         <h1 class="mt-4">Lobby</h1>
                         <div class="card mb-4">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Schedules
                            
                                 <p align = "right">
-                                    <a type = "button" class = "btn btn-primary" id = "resId"
+                                    <a type = "button" class = "btn btn-warning wave effects" id = "resId"
                                     href = "{% url 'reservationView' %}">
-                                    add Reservation
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                     Reservation
                                     </a>
                                 </p>
                             </div>
@@ -129,8 +130,8 @@
                                   <th scope="col" style = 'text-align:center;'>Reservation ID</th>
                                   <th scope="col" style = 'text-align:center;'>Available Rooms</th>
                                   <th scope="col" style = 'text-align:center;'>Title</th>
-                                  <th scope="col" style = 'text-align:center;'>Available Time</th>
-                                  <th scope="col" style = 'text-align:center;'>Actions</th>
+                                  <th scope="col" style = 'text-align:center;'>Reserved Date</th>
+                                  <th scope="col" style = 'text-align:center;'>Reserved Time</th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -139,54 +140,102 @@
                                   <td>{{r.resId}}</td>
                                   <td>{{r.availRooms}}</td>
                                   <td>{{r.title}}</td>
-                                  <td>{{r.availTime}}</td>
-                                  <td><a type="button" class="btn btn-primary" href="#" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+                                  <td>{{r.resDate}}</td>
+                                  <td>{{r.resTime}}</td>
+                                  <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
         
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
                                       DELETE
                                     </button></td>
                                 </tr>
+
                                 <!-- Modal VIEW-->
+                        
                           <div class="modal fade" id="newModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                 <div class="modal-header" style="background-color:#134f5c">
-                                  <h5 class="modal-title", style="font-size: large; font-family: Trirong;">VIEW DETAILS</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
+                                  <h5 class="modal-title", style="color: white; font-weight: bold; font-family:'Montserrat'; 
+                                  font-size: 20px; float: center;">VIEW DETAILS</h5>
+                                  
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
                                 </div>
+
+                                
                                 <form id="updateForm" method="post" >
                                 {% csrf_token %}
                                 <div class="modal-body">
                                   <input type="text" name="r-resId" value = {{r.resId}} hidden>
-                                  <div class="row" text-align ="center">
-                                    <div class="col-12" id="startup-tab-1">
-                                        <div class = "row" >
+                                  <div class="row" style="padding-top: 1%;">
+
+                                    <div class="form-row">
+                                       <div class="form-group col-md-6">
+                                          <label for="title">Available Rooms</label>
+                                         <select name="availRooms" id="room" class="form-control">
+                                          <option id="id-availRooms" name="r-availRooms" >{{r.availRooms}}</option>
+                                          <option value="Boardroom">Boardroom Style</option>
+                                          <option value="Hollow">Hollow Squaire Style</option>
+                                          <option value="U-Shape">U-Shape Style</option>
+                                          <option value="Classroom">Classroom Style</option>
+                                          <option value="Banquet">Banquet Style</option>
+                                         </select>
+                                       </div>
+
+                                      <div class="form-group col-md-6">
+                                        <label for="organizer">Title</label>
+                                        <input type="text" class="form-control" id="id-title" placeholder="Title"  name="r-title" value ={{r.title}}>
+                                      </div>
+
+                                      <div class="form-group">
+                                        <label for="inputAddress2">Date </label>
+                                        <input type="date" class="form-control" id="id-resDate" placeholder="Date"  name="r-resDate" value ={{r.resDate}}>
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="Time">Time</label>
+                                          <select name="resTime" id="time" class="form-control">
+                                              <option  > {{r.resTime}}</option>
+                                              <option value="09:00-12:00">09:00-12:00</option>
+                                              <option value="13:00-17:00">13:00-17:00</option>
+                                              <option value="18:00-22:00">18:00-22:00</option>
+                                          </select>
+                                          </div>
+
+                                  <div class="col-12" id="startup-tab-1">
+                                       <!--  <div class = "row" >
                                           <div class = "col-sm-4">
                                             <input type="text" class="form-control" id="id-availRooms" placeholder="Available Rooms" name="r-availRooms" value ={{r.availRooms}}>
                                           </div>
+
                                           <div class = "row">
                                           <div class = "col-sm-4">
                                             <input type="text" class="form-control" id="id-title" placeholder="Title"  name="r-title" value ={{r.title}}>
-                                          </div>
+                                          </div> 
                                         </div>
+                                        <div class = "row">
+                                          <div class = "col-sm-4">
+                                            <input type="text" class="form-control" id="id-resDate" placeholder="Date"  name="r-resDate" value ={{r.resDate}}>
+                                          </div>
+
                                         <div class = "row"></div>
                                           <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-availTime" placeholder="Available Time"  name="r-availTime" value ={{r.availTime}}>
-                                          </div>
+                                            <input type="text" class="form-control" id="id-resTime" placeholder="Time"  name="r-resTime" value ={{r.resTime}}>
+                                          </div>-->
                                         </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-primary">UPDATE</button>                             
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>                          
+                                    <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
+                                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
                                 </div>
                               </div>
                             </form>
                             </div>
                           </div>
+                          
         
                           <!-- Modal DELETE-->
                           <div class="modal fade" id="exampleModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
