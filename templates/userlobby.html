@@ -155,8 +155,7 @@
                             <div class="modal-dialog modal-lg" role="document">
                               <div class="modal-content">
                                 <div class="modal-header" style="background-color:#134f5c">
-                                  <h5 class="modal-title", style="color: white; font-weight: bold; font-family:'Montserrat'; 
-                                  font-size: 20px; float: center;">VIEW DETAILS</h5>
+                                  <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">VIEW DETAILS</h5>
                                   
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
@@ -188,46 +187,27 @@
                                         <input type="text" class="form-control" id="title" placeholder="Title"  name="r-title" value ={{r.title}}>
                                       </div>
 
-                                      <div class="form-group">
+                                      <div class="form-group col-md-6">
                                         <label for="organizer">Date (dd/mm/yyyy)</label>
                                         <input type="text" class="form-control" id="resDate" placeholder="dd/mm/yyyy"  name="r-resDate" value ={{r.resDate}}>
-                                        </div>
+                                      </div>
 
-                                        <div class="form-group">
-                                          <label for="title">Time</label>
+                                      <div class="form-group col-md-6">
+                                        <label for="title">Time</label>
                                           <select name="r-resTime" id="time" class="form-control">
-                                              <option  > {{r.resTime}}</option>
-                                              <option value="09:00-12:00">09:00-12:00</option>
-                                              <option value="13:00-17:00">13:00-17:00</option>
-                                              <option value="18:00-22:00">18:00-22:00</option>
+                                            <option  > {{r.resTime}}</option>
+                                            <option value="09:00-12:00">09:00-12:00</option>
+                                            <option value="13:00-17:00">13:00-17:00</option>
+                                            <option value="18:00-22:00">18:00-22:00</option>
                                           </select>
-                                          </div>
+                                      </div>
 
                                   <div class="col-12" id="startup-tab-1">
-                                       <!--  <div class = "row" >
-                                          <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-availRooms" placeholder="Available Rooms" name="r-availRooms" value ={{r.availRooms}}>
-                                          </div>
-
-                                          <div class = "row">
-                                          <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-title" placeholder="Title"  name="r-title" value ={{r.title}}>
-                                          </div> 
-                                        </div>
-                                        <div class = "row">
-                                          <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-resDate" placeholder="Date"  name="r-resDate" value ={{r.resDate}}>
-                                          </div>
-
-                                        <div class = "row"></div>
-                                          <div class = "col-sm-4">
-                                            <input type="text" class="form-control" id="id-resTime" placeholder="Time"  name="r-resTime" value ={{r.resTime}}>
-                                          </div>-->
                                         </div>
                                     </div>
                                   </div>
                                 </div>
-                                <div class="modal-footer" style="background-color: #ce7e00;">
+                                <div class="modal-footer">
                                     <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
                                     <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
                                 </div>
@@ -242,7 +222,8 @@
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header" style="background-color:#134f5c">
-                                  <h5 class="modal-title" id="exampleModalLabel">DELETE RECORD</h5>
+                                  <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; 
+                                  font-size: 20px;">DELETE RECORD</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
