@@ -173,8 +173,8 @@
                                     <div class="form-row">
                                        <div class="form-group col-md-6">
                                           <label for="title">Available Rooms</label>
-                                         <select name="availRooms" id="room" class="form-control">
-                                          <option type ="text" id="id-availRooms" name="availRooms" value={{r.availRooms}>
+                                         <select name="r-availRooms" id="room" class="form-control">
+                                          <option  > {{r.availRooms}}</option>
                                           <option value="Boardroom">Boardroom Style</option>
                                           <option value="Hollow">Hollow Squaire Style</option>
                                           <option value="U-Shape">U-Shape Style</option>
@@ -185,17 +185,17 @@
 
                                       <div class="form-group col-md-6">
                                         <label for="organizer">Title</label>
-                                        <input type="text" class="form-control" id="id-title" placeholder="Title"  name="r-title" value ={{r.title}}>
+                                        <input type="text" class="form-control" id="title" placeholder="Title"  name="r-title" value ={{r.title}}>
                                       </div>
 
                                       <div class="form-group">
-                                        <label for="inputAddress2">Date </label>
-                                        <input type="date" class="form-control" id="id-resDate" placeholder="Date"  name="r-resDate" value ={{r.resDate}}>
+                                        <label for="organizer">Date (dd/mm/yyyy)</label>
+                                        <input type="text" class="form-control" id="resDate" placeholder="dd/mm/yyyy"  name="r-resDate" value ={{r.resDate}}>
                                         </div>
 
                                         <div class="form-group">
-                                          <label for="Time">Time</label>
-                                          <select name="resTime" id="time" class="form-control">
+                                          <label for="title">Time</label>
+                                          <select name="r-resTime" id="time" class="form-control">
                                               <option  > {{r.resTime}}</option>
                                               <option value="09:00-12:00">09:00-12:00</option>
                                               <option value="13:00-17:00">13:00-17:00</option>
