@@ -14,7 +14,7 @@ class CreateUserForm(UserCreationForm):
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ('availRooms','title','resDate','resTime')
+        fields = ('availRooms','title','resDate','startAt', 'endAt')
 
 
 

@@ -103,13 +103,23 @@
 							<label for="organizer">Date (dd/mm/yyyy)</label>
 							<input type="text" class="form-control" id="resDate" name="resDate" placeholder="dd/mm/yyyy">
 						  </div>
-						  <div class="form-group">
-							<label for="title">Time</label>
-							<select name="resTime" id="time" class="form-control">
-								  <option value="09:00-12:00">09:00-12:00</option>
-								  <option value="13:00-17:00">13:00-17:00</option>
-								  <option value="18:00-22:00">18:00-22:00</option>
-							</select>
+						  <div class="form-row">
+						 	<div class="form-group col-md-6">
+								<label for="startsat">Starts at:</label>
+								<select name="startAt" id="startAt" class="form-control">
+									<option value="09:00">09:00</option>
+									<option value="13:00">13:00</option>
+									<option value="18:00">18:00</option>
+								</select>
+							</div>
+						  	<div class="form-group col-md-6">
+								<label for="endsat">Ends at:</label>
+								<select name="endAt" id="endAt" class="form-control">
+									<option value="12:00">12:00</option>
+									<option value="17:00">17:00</option>
+									<option value="22:00">22:00</option>
+								</select>
+						  	</div>
 						  </div>
 						  
 						  <!--div class="form-group">

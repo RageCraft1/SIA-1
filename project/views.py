@@ -67,16 +67,19 @@ class reservationView(View):
         print(title)
         resDate=request.POST.get("resDate")
         print(resDate)
-        resTime=request.POST.get("resTime")
-        print(resTime)
+        startAt=request.POST.get("startAt")
+        print(startAt)
+        endAt=request.POST.get("endAt")
+        print(endAt)
 
         if form.is_valid():
             availRooms=request.POST.get("availRooms")
             title=request.POST.get("title")
             resDate=request.POST.get("resDate")
-            resTime=request.POST.get("resTime")
+            startAt=request.POST.get("startAt")
+            endAt=request.POST.get("endAt")
     
-        form=Reservation(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
+        form=Reservation(availRooms=availRooms, title=title, resDate=resDate, startAt=startAt, endAt=endAt)
             
         form.save()
 
@@ -99,8 +102,9 @@ class lobbyView(View):
                 availRooms=request.POST.get("r-availRooms")
                 title=request.POST.get("r-title")
                 resDate=request.POST.get("r-resDate")
-                resTime=request.POST.get("r-resTime")
-                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, resDate=resDate, resTime=resTime)
+                startAt=request.POST.get("r-startAt")
+                endAt=request.POST.get("r-endAt")
+                update_Res = Reservation.objects.filter(resId=rid).update(availRooms=availRooms, title=title, resDate=resDate, startAt=startAt, endAt=endAt)
                 print(update_Res)
 
             elif 'btnDelete' in request.POST:
