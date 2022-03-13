@@ -22,7 +22,7 @@ def signup(request):
         if form.is_valid():
             form.save()
             messages.success(request,'Account was created')
-            return render(request,'signin.html',{'articles':'signin'})
+            return redirect('signin')
         else:
             messages.warning(request,'Username or Password is not valid!')
     context = {
@@ -42,7 +42,7 @@ def signin(request):
         user = authenticate(username=username, password = password1)
         if user is not None:
             login(request,user)
-            return render(request, 'userlobby.html',{'article':'lobby'})
+            return redirect('lobbyView')
         else:
             messages.info(request, 'Username or Password is incorrect!')
     context = {}
@@ -154,7 +154,7 @@ def deleteUser(request):
 		user.delete()
 
 		messages.success(request,'User deleted successfuly')
-		return redirect('signin')
+		return redirect('home')
 
 	else:
 		delete_form = UserDeleteForm(instance=request.user)
