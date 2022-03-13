@@ -1,9 +1,9 @@
 {% include 'base.html' %}
 {% load static %}
-
+{% block content %}
 <link href="{% static 'assets2/css/style.css' %}" rel="stylesheet" />
 <!--list Content-->      
-<div class="container">
+<div class="container" style="padding-left: 60px; padding-top: 30px">
     <div class="row gutters">
         <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
             <!--AVATAR ICON AND NAME TABLE-->
@@ -19,7 +19,7 @@
                         </div>
                         <div class="about">
                             <h5>About</h5>
-                            <p>I'm Yuki. Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
+                            <p>I'm {{ request.user }} Full Stack Designer I enjoy creating user-centric, delightful and human experiences.</p>
                         </div>
                     </div>
                 </div>
@@ -41,13 +41,13 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="fullName">Full Name</label>
-                                <input type="text" class="form-control" id="fullName" value="{{ request.user }}">
+                                <input type="text" class="form-control" id="fullName" placeholder="{{ request.user }}">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="eMail">Email</label>
-                                <input type="email" class="form-control" id="eMail" value="{{ request.user.email }}">
+                                <input type="email" class="form-control" id="eMail" placeholder="{{ request.user.email }}">
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
@@ -56,12 +56,12 @@
                                 <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
                             </div>
                         </div>
-                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                        {% comment %} <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="website">Website URL</label>
                                 <input type="url" class="form-control" id="website" placeholder="Website url">
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                     </div>
                     <!--End of Personal Details-->
                     <!--Address-->
@@ -109,3 +109,5 @@
         <!--End of main body card-->
     </div>
 </div>
+
+{% endblock %}

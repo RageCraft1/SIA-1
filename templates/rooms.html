@@ -1,294 +1,192 @@
-{%load static %}
+{% include 'base.html' %}
+{% load static %}
+{% block content %}
+    <title>Lobby</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-       
-        <title>Lobby</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="{% static 'assets2/css/styles.css' %}" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<style type="text/css">
-    .navbar{
-        background-color: #134f5c;
-    }
-    .sb-sidenav-menu{
-        background-color: #134f5c ;
-    }
-    .nav-item li{
-        background-color: #ce7e00;
-    }
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  
-     
-}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    
-}
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+      }
 
-.main-container {
-  padding: 30px;
-}
+      .main-container {
+        padding: 30px;
+      }
 
-/* HEADING */
+      /* HEADING */
 
-.heading {
-  text-align: center;
-}
+      .heading {
+        text-align: center;
+      }
 
-.heading__title {
-  font-weight: 600;
-}
+      .heading__title {
+        font-weight: 600;
+      }
 
-.heading__credits {
-  margin: 10px 0px;
-  color: #888888;
-  font-size: 25px;
-  transition: all 0.5s;
-}
+      .heading__credits {
+        margin: 10px 0px;
+        color: #888888;
+        font-size: 25px;
+        transition: all 0.5s;
+      }
 
-.heading__link {
-  text-decoration: none;
-}
+      .heading__link {
+        text-decoration: none;
+      }
 
-.heading__credits .heading__link {
-  color: inherit;
-}
+      .heading__credits .heading__link {
+        color: inherit;
+      }
 
-/* CARDS */
+      /* CARDS */
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+      .cards {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
 
-.card {
-  margin: 20px;
-  padding: 20px;
-  width: 500px;
-  min-height: 200px;
-  display: grid;
-  grid-template-rows: 20px 50px 1fr 50px;
-  border-radius: 10px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-  transition: all 0.2s;
-}
+      .card {
+        margin: 20px;
+        padding: 20px;
+        width: 500px;
+        min-height: 200px;
+        display: grid;
+        grid-template-rows: 20px 50px 1fr 50px;
+        border-radius: 10px;
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+        transition: all 0.2s;
+      }
 
-.card:hover {
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-  transform: scale(1.01);
-}
+      .card:hover {
+        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+        transform: scale(1.01);
+      }
 
-.card__link,
-.card__exit,
-.card__icon {
-  position: relative;
-  text-decoration: none;
-  color: rgba(255, 255, 255, 0.9);
-}
+      .card__link,
+      .card__exit,
+      .card__icon {
+        position: relative;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.9);
+      }
 
-.card__link::after {
-  position: absolute;
-  top: 25px;
-  left: 0;
-  content: "";
-  width: 0%;
-  height: 3px;
-  background-color: rgba(255, 255, 255, 0.6);
-  transition: all 0.5s;
-}
+      .card__link::after {
+        position: absolute;
+        top: 25px;
+        left: 0;
+        content: "";
+        width: 0%;
+        height: 3px;
+        background-color: rgba(255, 255, 255, 0.6);
+        transition: all 0.5s;
+      }
 
-.card__link:hover::after {
-  width: 100%;
-}
+      .card__link:hover::after {
+        width: 100%;
+      }
 
-.card__exit {
-  grid-row: 1/2;
-  justify-self: end;
-}
+      .card__exit {
+        grid-row: 1/2;
+        justify-self: end;
+      }
 
-.card__icon {
-  grid-row: 2/3;
-  font-size: 30px;
-}
+      .card__icon {
+        grid-row: 2/3;
+        font-size: 30px;
+      }
 
-.card__title {
-  grid-row: 3/4;
-  font-weight: 400;
-  color: #ffffff;
-}
+      .card__title {
+        grid-row: 3/4;
+        font-weight: 400;
+        color: #ffffff;
+      }
 
-.card__apply {
-  grid-row: 4/5;
-  align-self: center;
-}
+      .card__apply {
+        grid-row: 4/5;
+        align-self: center;
+      }
 
-@media (max-width: 1600px) {
-  .cards {
-    justify-content: center;
-  }
-  .main {
-    background-image: url(..img/ex.jpg);
-  }
-}
-</style>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand">
-            <!-- Navbar Brand-->
-       
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" style="background-color:#ce7e00;" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-warning" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+      @media (max-width: 1600px) {
+        .cards {
+          justify-content: center;
+        }
+        .main {
+          background-image: url(..img/ex.jpg);
+        }
+      }
+    </style>  
+    <div id="layoutSidenav_content" style="padding-left: 18%; padding-top: 50px">
+      <main>
+        <div class="container-fluid px-4">
+          <h1 class="mt-4">Rooms</h1>
+          <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4">
+              <h5 class="card-title" >Hollow Square Style</h5>
+              <div> <a href="../reservation" class="card" style="background-image: url(https://5.imimg.com/data5/BM/HI/MY-306032/conference-facilities-500x500.jpg); height:fit-content;"></a>  
+                <div class="card-body">
                 </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="../lobby">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                My Schedule
-                            </a>
-                           
-                            <a class="nav-link active" href="../rooms">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Rooms
-                            
-                            </a>
-                            <a class="nav-link collapsed" href="../profile"aria-expanded="false" >
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Account Profile
-                            </a>                                           
-                            <a class="nav-link" href="../settings">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Settings
-                            </a>
-                            <a class="nav-link" href="../report">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Report
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small" class="hello-msg">{{request.user}}</span> 
-                    </div>
-                </nav>
+              </div>
             </div>
-            <div id="layoutSidenav_content" >
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Rooms</h1>
-                        <div class="row row-cols-1 row-cols-md-2">
-                            <div class="col mb-4">
-                              <h5 class="card-title" >Hollow Square Style</h5>
-                            <div> <a href="../reservation" class="card" style="background-image: url(https://5.imimg.com/data5/BM/HI/MY-306032/conference-facilities-500x500.jpg); height:fit-content;"></a>  
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
 
-                            <div class="col mb-4">
-                              <h5 class="card-title">Boardroom Style</h5>
-                              <div><a href="../reservation" class="card" style="background-image: url(https://i.itbusiness.ca/wp-content/uploads/2014/02/Charming-modern-minimalist-meeting-room-interior-design.jpg);height:fit-content;"></a>
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col mb-4">
-                              <h5 class="card-title">Classroom Style</h5>
-                              <div><a href="../reservation"  class="card" style="background-image: url(https://www.shilla.net/images/en/jeju/facilities/msRoomImg.jpg); height:fit-content;"></a>
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
-
-                           <div class="col mb-4">
-                              <h5 class="card-title">Auditorium Style</h5>
-                              <div><a href="../reservation" class="card" style="background-image: url(https://www.bigvenuebook.com/venue-images/room_image5171.jpg); background-repeat: no-repeat; height:fit-content;"></a>
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
-
-                              <div class="col mb-4">
-                              <h5 class="card-title">U-Shape Style</h5>
-                              <div> <a href="../reservation"class="card" href=""style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQid_MXLBiOwpFi3pOsiwTCxrkDdIWsAVgwgo9KFtHMJ4xSjrmM6sLWV4l5Iy8z-LfnV_g&usqp=CAU);"></a>
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col mb-4">
-                              <h5 class="card-title">Banquet Style</h5>
-                              <div><a href="../reservation"class="card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwtpVIB-SUVmu6qd7RUvMgyFfsKN5e4_mEHSL2nkQUa6dlKYK3jRnofQtIBE4gj-vbkQk&usqp=CAU); height:fit-content;"></a>
-                                <div class="card-body">
-                                </div>
-                              </div>
-                            </div>
-                    </div>
-                </main>
-
-                 <!-- Choices Modal-->
-    <div class="modal fade" id="chooseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Please select</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+            <div class="col mb-4">
+              <h5 class="card-title">Boardroom Style</h5>
+              <div><a href="../reservation" class="card" style="background-image: url(https://i.itbusiness.ca/wp-content/uploads/2014/02/Charming-modern-minimalist-meeting-room-interior-design.jpg);height:fit-content;"></a>
+                <div class="card-body">
+                </div>
+              </div>
             </div>
-            <div class="modal-body">Are you a </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Host?</button>
-                <a class="btn btn-primary" href="logout">Participant?</a>
+
+            <div class="col mb-4">
+              <h5 class="card-title">Classroom Style</h5>
+              <div><a href="../reservation"  class="card" style="background-image: url(https://www.shilla.net/images/en/jeju/facilities/msRoomImg.jpg); height:fit-content;"></a>
+                <div class="card-body">
+                </div>
+              </div>
             </div>
+
+            <div class="col mb-4">
+              <h5 class="card-title">Auditorium Style</h5>
+              <div><a href="../reservation" class="card" style="background-image: url(https://www.bigvenuebook.com/venue-images/room_image5171.jpg); background-repeat: no-repeat; height:fit-content;"></a>
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4">
+              <h5 class="card-title">U-Shape Style</h5>
+              <div> <a href="../reservation"class="card" href=""style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQid_MXLBiOwpFi3pOsiwTCxrkDdIWsAVgwgo9KFtHMJ4xSjrmM6sLWV4l5Iy8z-LfnV_g&usqp=CAU);"></a>
+                <div class="card-body">
+                </div>
+              </div>
+            </div>
+
+            <div class="col mb-4">
+              <h5 class="card-title">Banquet Style</h5>
+              <div><a href="../reservation"class="card" style="background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwtpVIB-SUVmu6qd7RUvMgyFfsKN5e4_mEHSL2nkQUa6dlKYK3jRnofQtIBE4gj-vbkQk&usqp=CAU); height:fit-content;"></a>
+                <div class="card-body">
+                </div>
+            </div>
+          </div>
         </div>
+      </main>
+
+      <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid px-4">
+              <div class="d-flex align-items-center justify-content-between small">
+                  <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                  <div>
+                      <a href="#">Privacy Policy</a>
+                      &middot;
+                      <a href="#">Terms &amp; Conditions</a>
+                  </div>
+              </div>
+          </div>
+      </footer>
     </div>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{% static 'assets2/js/scripts.js' %}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -296,5 +194,4 @@ body {
         <script src="{% static 'assets2/demo/chart-bar-demo.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="{% static 'assets2/js/datatables-simple-demo.js' %}"></script>
-    </body>
-</html>
+{% endblock %}
