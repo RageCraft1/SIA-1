@@ -45,13 +45,13 @@ def signin(request):
             return render(request, 'userlobby.html',{'article':'lobby'})
         else:
             messages.info(request, 'Username or Password is incorrect!')
-
-    return render(request, 'signin.html')
+    context = {}
+    return render(request, 'signin.html',context)
 
 #Logs User Out
 def logOutUser(request):
 	logout(request)
-	return redirect('articles:sigin')
+	return redirect('articles:signin')
 
 
 #Add a reservation for a room
@@ -146,4 +146,24 @@ def reservedinfo(request):
 
 def profile(request):
     return render(request, 'profile.html')
+
+def deleteUser(request):
+	if request.method =='POST':
+		delete_form = UserDeleteForm(request.POST, instance=request.user)
+		user = request.user
+		user.delete()
+
+		messages.success(request,'User deleted successfuly')
+		return redirect('signin')
+
+	else:
+		delete_form = UserDeleteForm(instance=request.user)
+	context= {
+		'delete_form':delete_form
+	}
+	return render(request,'deleteacc.html',context)
+
+
+def settings(request):
+    return render(request, 'settings.html')
 

@@ -16,7 +16,10 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = ('availRooms','title','resDate','resTime')
 
-
+class UserDeleteForm(forms.ModelForm):
+	class Meta:
+		model = User
+		fields= ('username',)
 
 
 
