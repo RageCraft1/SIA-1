@@ -145,7 +145,7 @@ def reservedinfo(request):
 
 
 def profile(request):
-    return render(request, 'profile.html')
+    return render(request, 'profilenew.html')
 
 def deleteUser(request):
 	if request.method =='POST':
