@@ -1,0 +1,145 @@
+ {% include 'base.html' %}
+ <style>
+
+    .modal-dialog {
+            width: 500px;
+ }
+    .modal-header {
+            padding:16px 16px;
+            border-bottom:2px dashed #337AB7;
+}     
+ </style>
+ <!--list Content-->      
+ <div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">                     
+                 <h2 class="h3 mb-4 page-title">Settings</h2>
+            <div class="my-4">
+                <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                   <!-- <li class="nav-item">
+                        <a class="nav-link active" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Notifications</a>
+                    </li>-->
+                </ul>
+                <h5 class="mb-0 mt-5">Notifications Settings</h5>
+                <p>Select notification you want to receive</p>
+                <hr class="my-4" />
+                <strong class="mb-0">Security</strong>
+                <p>Control security alert you will be notified.</p>
+                <div class="list-group mb-5 shadow">
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="mb-0">Unusual activity notifications</strong>
+                                <p class="text-muted mb-0">Investigate suspicious activity on your account.</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="alert1" checked="" />
+                                    <span class="custom-control-label"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="mb-0">Unauthorized financial activity</strong>
+                                <p class="text-muted mb-0">Your financial activity might be suspicious if:</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="alert2" />
+                                    <span class="custom-control-label"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-4" />
+                <strong class="mb-0">System</strong>
+                <p>Please enable system alert you will get.</p>
+                <div class="list-group mb-5 shadow">
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="mb-0">Notify me about new features and updates</strong>
+                                <p class="text-muted mb-0">Notify me if there is new feature offered.</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="alert3" checked="" />
+                                    <span class="custom-control-label"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <strong class="mb-0">Notify me about tips on using account</strong>
+                                <p class="text-muted mb-0">Manage notification about tips in using this account.</p>
+                            </div>
+                            <div class="col-auto">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input" id="alert5" />
+                                    <span class="custom-control-label"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+        
+                </div>
+                <strong class="mb-0">Manage Account</strong>
+                <p>Manage account such us delete account.</p>
+                <div class="list-group mb-5 shadow">
+                    <div class="list-group-item">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <a   href="../delete">Delete Account</a>
+                                <p class="text-muted mb-0">Click here if you want to delete your account!</p>
+                            </div>
+                           
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>  
+     {% for message in messages%}
+              <p id="messages">{{message}}</p>
+            {% endfor %}
+                 </div>
+                </div>
+               </div>
+            </div>
+          </div>
+        </section>
+
+             <!--data-toggle="modal" data-target="#deleteModal"  class="mb-0"
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header" style="background-color:#134f5c">
+                  <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">Delete Account</h5>
+                  
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4"></legend>
+                <p style="color:black;" >Are you sure you want to delete your account? <br> This will permanently 
+                deleted your profile and any content you have generated.</p>
+                {{ form }}
+            </fieldset>
+            <div style="float:right;">
+                <a class="btn btn-primary" href="../settings">Cancel</a>
+                <button class="btn btn-danger" type="submit">Delete Account</button>
+            </div>  
+            </div>
+        </form>
+        -->

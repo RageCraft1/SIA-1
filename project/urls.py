@@ -30,4 +30,9 @@ urlpatterns = [
 
     #Profile setup
     path('profile/',views.profile, name="profile"),
+
+    #settings
+    path('settings/',views.settings, name="settings"),
+    #deleteUser
+    path('delete/',views.deleteUser, name="delete"),
 ]
