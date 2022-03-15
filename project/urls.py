@@ -35,4 +35,6 @@ urlpatterns = [
     path('settings/',views.settings, name="settings"),
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
+    #dashboard
+    path('dashboard/',views.dashboard, name="dashboard"),
 ]

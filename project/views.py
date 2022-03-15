@@ -13,6 +13,9 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     return render(request, 'index.html')
 
+def dashboard(request):
+    return render(request, 'dashboard.html')
+    
 #Signs up user by creating a superuser without admin previledge
 def signup(request):
     form = CreateUserForm()
