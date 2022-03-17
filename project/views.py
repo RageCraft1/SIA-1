@@ -15,6 +15,9 @@ def index(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+def calendar(request):
+    return render(request, 'calendar.html')
     
 #Signs up user by creating a superuser without admin previledge
 def signup(request):
