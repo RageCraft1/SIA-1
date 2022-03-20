@@ -126,16 +126,61 @@
                     <th scope="col" style = 'text-align:center;'>Vacant Rooms</th>
                     <th scope="col" style = 'text-align:center;'>Most Booked Rooms</th>
                     <th scope="col" style = 'text-align:center;'>No. of bookings in a day</th>
+                    <th scope="col" style = 'text-align:center;'>Options/Functions</th>
                   </tr>
                 </thead>
-                <tbody>
-                  {% for r in reservation %}
+                {% comment %} <tbody>
+                  {% for r in reservation %} {% endcomment %}
                   <tr>
-                    <td>{{r.resId}}</td>
+                    {% comment %} <td>{{r.resId}}</td>
                     <td>{{r.availRooms}}</td>
                     <td>{{r.title}}</td>
                     <td>{{r.resDate}}</td>
-                    <td>{{r.resTime}}</td>
+                    <td>{{r.resTime}}</td> {% endcomment %}
+                    <td><p>Boardroom Style</p></td>
+                    <td><p>NANO DILI NI MO GAWAS</p></td>
+                    <td><p>I'm CRYING!!!!!</p></td>
+                    <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
+                        DELETE
+                      </button></td>
+                  </tr>
+                  <tr>
+                    <td><p>Hollow Squaire Style</p></td>
+                    <td><p>NANO DILI NI MO GAWAS</p></td>
+                    <td><p>I'm CRYING!!!!!</p></td>
+                    <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
+                        DELETE
+                      </button></td>
+                  </tr>
+                  <tr>
+                    <td><p>U-Shape Style</p></td>
+                    <td><p>NANO DILI NI MO GAWAS</p></td>
+                    <td><p>I'm CRYING!!!!!</p></td>
+                    <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
+                        DELETE
+                      </button></td>
+                  </tr>
+                  <tr>
+                    <td><p>Classroom Style</p></td>
+                    <td><p>NANO DILI NI MO GAWAS</p></td>
+                    <td><p>I'm CRYING!!!!!</p></td>
+                    <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
+                        DELETE
+                      </button></td>
+                  </tr>
+
+                  <tr>
+                    <td><p>Banquet Style</p></td>
+                    <td><p>NANO DILI NI MO GAWAS</p></td>
+                    <td><p>I'm CRYING!!!!!</p></td>
                     <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
 
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
@@ -235,9 +280,9 @@
                         </div>
                       </div>
                     </div>
-                    {% endfor %}
+                    {% comment %} {% endfor %} {% endcomment %}
                   </div>
-                </tbody>
+                {% comment %} </tbody> {% endcomment %}
               </table>
             </div>
             
