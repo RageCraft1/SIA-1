@@ -219,6 +219,7 @@ def reservedinfo(request):
 def profile(request):
     return render(request, 'profilenew.html')
 
+#Delete a User
 def deleteUser(request):
 	if request.method =='POST':
 		delete_form = UserDeleteForm(request.POST, instance=request.user)
