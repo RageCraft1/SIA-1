@@ -36,6 +36,5 @@ urlpatterns = [
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
     #dashboard
-    path('dashboard/',views.dashboard, name="dashboard"),
-    path('calendar/',views.calendar, name="calendar"),
+    path('dashboard/',views.dashboard, name="dashboard")
 ]

@@ -21,6 +21,11 @@ class UserDeleteForm(forms.ModelForm):
 		model = User
 		fields= ('username',)
 
+class BookForm(forms.ModelForm):
+    class Meta:
+        model = Book
+        fields = ('availRooms', 'bRoom', 'numBook')
+
 
 
 

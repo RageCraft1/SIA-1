@@ -15,9 +15,6 @@ def index(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
-
-def calendar(request):
-    return render(request, 'calendar.html')
     
 #Signs up user by creating a superuser without admin previledge
 def signup(request):
@@ -117,6 +114,75 @@ class lobbyView(View):
                 print('recorded deleted')
 
         return redirect('lobbyView')
+
+class dashboardView(View):   
+    def get(self, request):
+        if 'SearchBook' in request.GET:
+            q1 = request.GET['q1']
+            q2 = request.GET['q2']
+            q3 = request.GET['q3']
+            print(q3)
+            # multiQ = Q(Q(employee_id__icontains=q) & Q(firstname__icontains=q) )
+
+            if q1 and q2 != '':
+                book = Book.objects.filter(date=q1).filter(resTime=q2)
+                reservation = Reservation.objects.all()
+
+            elif q1 and q3 != '':
+                book = Book.objects.filter(date=q1).filter(title=q3)
+                reservation = Reservation.objects.all()
+
+            elif q2 and q3 != '':
+                book = Book.objects.filter(resTime=q2).filter(title=q3)
+                reservation = Reservation.objects.all()
+
+            else:
+                if q3 == '':
+                    book = Book.objects.filter(resTime=q2) or Book.objects.filter(Q(date=q1))
+                else:
+                    book = Book.objects.filter(title=q3)
+                reservation = Reservation.objects.all()
+            # print(employee)
+            # department = Department.objects.all()
+            # designation = Designation.objects.all()
+        else:
+            reservation = Reservation.objects.all()
+            #designation = Designation.objects.all()
+            book = Book.objects.all()
+
+        context = {
+            'reservation': reservation,
+            'book': book,
+        }
+
+        return render(request, 'dashboard.html', context)
+
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnUpdate' in request.POST:
+                print ('update profile button clicked')
+                did=request.POST.get("book-Id")
+                date=request.POST.get("d-date")
+                startTime=request.POST.get("d-startTime")
+                endTime=request.POST.get("d-endTime")
+                title=request.POST.get("i-title")
+                prefix=request.POST.get("d-prefix")
+                firstname=request.POST.get("d-firstname")
+                middlename=request.POST.get("d-middlename")
+                lastname=request.POST.get("d-lastname")
+
+                update_book = Book.objects.filter(id=did).update(date=date, startTime=startTime, 
+                endTime=endTime, title=title, prefix=prefix, firstname=firstname, middlename=middlename, lastname=lastname)
+                print(update_book)
+
+                print('profile updated')
+            elif 'btnDelete' in request.POST:
+                print('delete button clicked')
+                did=request.POST.get("bbook-id")
+                book=Book.objects.filter(id=did).delete()
+                print('recorded deleted')
+
+        return redirect('latest_reservation')
 
 #Brings user to the protocol submit page
 def protocol(request):
