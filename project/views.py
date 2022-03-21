@@ -46,7 +46,22 @@ def signin(request):
         if user is not None:
             login(request,user)
             return redirect('lobbyView')
-        else:
+        else:   
+            messages.info(request, 'Username or Password is incorrect!')
+    context = {}
+    return render(request, 'signin.html',context)
+
+#Admin Sign in
+def signin(request):
+    if request.method =='POST':
+        username = request.POST.get('username')
+        password1 = request.POST.get('password')
+
+        user = authenticate(username=username, password = password1)
+        if user.is_staff:
+              login(request,user)
+              return redirect('adminLobby')
+        else:   
             messages.info(request, 'Username or Password is incorrect!')
     context = {}
     return render(request, 'signin.html',context)
@@ -195,6 +210,12 @@ def lobby(request):
 
 def rooms(request):
     return render(request, 'rooms.html')
+
+def adminSide(request):
+    return render(request, 'adminLobby.html')
+
+def addrooms(request):
+    return render(request, 'addrooms.html')
 
 def hostParticipant(request):
     return render(request, 'hostParticipant.html')

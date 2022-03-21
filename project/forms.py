@@ -26,7 +26,9 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ('availRooms', 'bRoom', 'numBook')
 
-
-
+class RoomForm(forms.ModelForm):
+    class Meta:
+        model = Room
+        fields = ('roomtype',)
 
 

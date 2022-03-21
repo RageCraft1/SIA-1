@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
@@ -17,3 +18,15 @@ class Book(models.Model):
     numBook = models.IntegerField()
     class meta:
         db_table="Book"
+
+class Room(models.Model):
+    roomId = models.AutoField(primary_key = True)
+    roomtype = models.CharField(max_length=50, null=True)
+    image = models.ImageField(null = True, blank = True, upload_to="images/")
+    
+    ROOM_STATUS = ( 
+    ("1", "available"), 
+    ("2", "not available"),    
+    ) 
+    class meta:
+        db_table="Room"
