@@ -120,48 +120,6 @@
                 </p>
               </div>
                         
-              <!-- Search Filter -->
-              <form method="GET">
-                <div class="row filter-row">
-                  <div class="col-sm-6 col-md-3">  
-                    <div class="form-group form-focus">
-                      <input name="q1" type="date" class="form-control floating">
-                      <label class="focus-label">Date</label>
-                    </div>
-                  </div>
-                      
-                  <div class="col-sm-6 col-md-3">  
-                    <div class="form-group form-focus">
-                      <input name="q2" type="search" class="form-control floating">
-                      <label class="focus-label"></label>
-                    </div>
-                  </div>
-                      
-                  <div class="col-sm-6 col-md-3"> 
-                    <div class="form-group form-focus">
-                      <select name="q3" type="search" class="select floating"> 
-                        <option value="">Select Room</option>
-                        <option value="">Hollow Square Style</option>
-                        <option value="">Boardroom Style</option>
-                        <option value="">Classroom Style</option>
-                        <option value="">Auditorium Style</option>
-                        <option value="">U-Shape Style</option>
-                        <option value="">Banquet Style</option>
-                        {% for r in reservation %}
-                        <option value="{{r.resId}}">{{r.resId}}/{{r.title}}</option>										
-                        {% endfor %}
-                      </select>
-                      
-                      <label class="focus-label"></label>
-                    </div>
-                  </div>
-                      
-                  <div class="col-sm-6 col-md-3">  
-                    <button type="submit" name="SearchBook" class="btn btn-success btn-block"> Search </button>  
-                </div>
-              
-              </form>
-              <!-- Search Filter -->
               <table style = 'text-align:center' class = "table table-primary table-striped" style = "width:100%">
                 <thead>
                   <tr >
