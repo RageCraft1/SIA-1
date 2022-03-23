@@ -168,27 +168,8 @@
                                 </button>
                                 </div>
 
-<<<<<<< Updated upstream
-                                  <div class="form-group col-md-6">
-                                    <label for="organizer">Title</label>
-                                    <input type="text" class="form-control" id="title" placeholder="Title"  name="r-title" value ={{r.title}}>
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="organizer">Date (dd/mm/yyyy)</label>
-                                    <input type="text" class="form-control" id="resDate" placeholder="dd/mm/yyyy"  name="r-resDate" value ={{r.resDate}}>
-                                  </div>
-                                  <div class="form-group col-md-6">
-                                    <label for="title">Time</label>
-                                      <select name="r-resTime" id="time" class="form-control">
-                                        <option  > {{r.resTime}}</option>
-                                        <option value="09:00-12:00">09:00-12:00</option>
-                                        <option value="13:00-17:00">13:00-17:00</option>
-                                        <option value="18:00-22:00">18:00-22:00</option>
-                                      </select>
-                                  </div>
-=======
                                 
-                                <form id="updateForm" method="post" >
+                               <form id="updateForm" method="post" >
                                 {% csrf_token %}
                                 <div class="modal-body">
                                   <input type="text" name="r-resId" value = {{r.resId}} hidden>
@@ -226,7 +207,6 @@
                                             <option value="18:00-22:00">18:00-22:00</option>
                                           </select>
                                       </div>
->>>>>>> Stashed changes
 
                                   <div class="col-12" id="startup-tab-1">
                                         </div>
