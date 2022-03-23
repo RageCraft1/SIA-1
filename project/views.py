@@ -129,7 +129,11 @@ class lobbyView(View):
                 print('recorded deleted')
 
         return redirect('lobbyView')
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
 #Brings user to the protocol submit page
 def protocol(request):
     return render(request, 'protocol.html')
