@@ -2,280 +2,303 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-       
-        <title>Lobby</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="{% static 'assets2/css/styles.css' %}" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <head>      
+    <title>Lobby</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="{% static 'assets2/css/styles.css' %}" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	  
-<style type="text/css">
-    .navbar{
-        background-color: #134f5c;
-    }
-    .sb-sidenav-menu{
-        background-color: #134f5c ;
-    }
-    .nav-item li{
-        background-color: #ce7e00;
-    }
+
+    <style type="text/css">
+      .navbar{
+          background-color: #134f5c;
+      }
+      .sb-sidenav-menu{
+          background-color: #134f5c ;
+      }
+      .nav-item li{
+          background-color: #ce7e00;
+      }
+    </style>
+  </head>
   
-</style>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand">
-            <!-- Navbar Brand-->
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand">
+      <!-- Navbar Brand-->
        
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" style="background-color:#ce7e00;" href="#!"><i class="fas fa-bars"></i></button>
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" style="background-color:#ce7e00;" href="#!"><i class="fas fa-bars"></i></button>
             
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group col-md-6">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <!--<button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
-                </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-              <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true" data-backdrop="false">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group col-md-6">
+          <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+          <!--<button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
+        </div>
+      </form>
+        
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#!">Settings</a></li>
+            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+              
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="false">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
             </div>
+            
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="../signin">Logout</a>
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="../signin">Logout</a>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-        </nav>
+      </div>
+    </nav>
        
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Menu</div>
-                            
-                            <a class="nav-link " href="../dashboard"  >
-                              <div class="sb-nav-link-icon" ><i class="fas fa-dashboard"></i></div>
-                              Dashboard
-                          </a>
-                            <a class="nav-link active" href="../lobby"  >
-                                <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
-                                My Schedule
-                            </a>
-                           
-                            <a class="nav-link collapsed" href="../rooms">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Rooms
-                            
-                            </a>
-                            <a class="nav-link collapsed" href="../profile"aria-expanded="false" >
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Account Profile
-                            </a>                                           
-                            <a class="nav-link" href="../settings">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Settings
-                            </a>
-                            <a class="nav-link" href="../report">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Report
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small" class="hello-msg">{{request.user}}</span>
-                    </div>
-                </nav>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Menu</div>                            
+              <a class="nav-link " href="../dashboard"  >
+                <div class="sb-nav-link-icon" ><i class="fas fa-dashboard"></i></div>
+                Dashboard
+              </a>
+              <a class="nav-link active" href="../lobby"  >
+                <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
+                My Schedule
+              </a>     
+              <a class="nav-link collapsed" href="../rooms">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Rooms
+              </a>
+              <a class="nav-link collapsed" href="../profile"aria-expanded="false" >
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                Account Profile
+              </a>                                           
+              <a class="nav-link" href="../settings">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                Settings
+              </a>
+              <a class="nav-link" href="../report">
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                Report
+              </a>
             </div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        {% csrf_token %}
-                        <h1 class="mt-4">Lobby</h1>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                           
-                                <p align = "right">
-                                    <a type = "button" class = "btn btn-warning wave effects" id = "resId"
-                                    href = "{% url 'reservationView' %}">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                     Reservation
-                                    </a>
-                                </p>
-                            </div>
-                            <table style = 'text-align:center' class = "table table-primary table-striped" style = "width:100%">
-                                <thead>
-                                <tr >
-                                  <th scope="col" style = 'text-align:center;'>Reservation ID</th>
-                                  <th scope="col" style = 'text-align:center;'>Reserved Rooms</th>
-                                  <th scope="col" style = 'text-align:center;'>Title</th>
-                                  <th scope="col" style = 'text-align:center;'>Reserved Date</th>
-                                  <th scope="col" style = 'text-align:center;'>Reserved Time</th>
-                                  <th></th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                    {% for r in reservation %}
-                                <tr>
-                                  <td>{{r.resId}}</td>
-                                  <td>{{r.availRooms}}</td>
-                                  <td>{{r.title}}</td>
-                                  <td>{{r.resDate}}</td>
-                                  <td>{{r.resTime}}</td>
-                                  <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
-        
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
-                                      DELETE
-                                    </button></td>
-                                </tr>
+          </div>
+                    
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small" class="hello-msg">{{request.user}}</span>
+          </div>
+        </nav>
+      </div>
+            
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid px-4">
+            {% csrf_token %}
+            <h1 class="mt-4">Lobby</h1>
+            <div class="card mb-4">
+              <div class="card-header">                          
+                <p align = "right">
+                  <a type = "button" class = "btn btn-warning wave effects" id = "resId"
+                  href = "{% url 'reservationView' %}">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                    Reservation
+                  </a>
+                </p>
+              </div>
+                            
+              <table style = 'text-align:center;width:100%' class = "table table-primary table-striped" id="reservedDatatable">
+                <thead>
+                  <tr >
+                    <th scope="col" style = 'text-align:center;'>Reservation ID</th>
+                    <th scope="col" style = 'text-align:center;'>Reserved Rooms</th>
+                    <th scope="col" style = 'text-align:center;'>Title</th>
+                    <th scope="col" style = 'text-align:center;'>Reserved Date</th>
+                    <th scope="col" style = 'text-align:center;'>Reserved Time</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                              
+                <tbody>
+                  {% for r in reservation %}
+                  <tr>
+                    <td>{{r.resId}}</td>
+                    <td>{{r.availRooms}}</td>
+                    <td>{{r.title}}</td>
+                    <td>{{r.resDate}}</td>
+                    <td>{{r.resTime}}</td>
+                    <td>
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
+                        DELETE
+                      </button>
+                    </td>
+                  </tr>
 
-                                <!-- Modal VIEW-->
-                        
-                          <div class="modal fade" id="newModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header" style="background-color:#134f5c">
-                                  <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">VIEW DETAILS</h5>
-                                  
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                                </div>
+                  <!-- Modal VIEW-->                        
+                  <div class="modal fade" id="newModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#134f5c">
+                          <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">VIEW DETAILS</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
 
-                                
-                               <form id="updateForm" method="post" >
-                                {% csrf_token %}
-                                <div class="modal-body">
-                                  <input type="text" name="r-resId" value = {{r.resId}} hidden>
-                                  <div class="row" style="padding-top: 1%;">
+                        <form id="updateForm" method="post" >
+                          {% csrf_token %}
+                            <div class="modal-body">
+                              <input type="text" name="r-resId" value = {{r.resId}} hidden>
+                              <div class="row" style="padding-top: 1%;">
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="title">Available Rooms</label>
+                                    <select name="r-availRooms" id="room" class="form-control">
+                                      <option  > {{r.availRooms}}</option>
+                                      <option value="Boardroom">Boardroom Style</option>
+                                      <option value="Hollow">Hollow Squaire Style</option>
+                                      <option value="U-Shape">U-Shape Style</option>
+                                      <option value="Classroom">Classroom Style</option>
+                                      <option value="Banquet">Banquet Style</option>
+                                    </select>
+                                  </div>
 
-                                    <div class="form-row">
-                                       <div class="form-group col-md-6">
-                                          <label for="title">Available Rooms</label>
-                                         <select name="r-availRooms" id="room" class="form-control">
-                                          <option  > {{r.availRooms}}</option>
-                                          <option value="Boardroom">Boardroom Style</option>
-                                          <option value="Hollow">Hollow Squaire Style</option>
-                                          <option value="U-Shape">U-Shape Style</option>
-                                          <option value="Classroom">Classroom Style</option>
-                                          <option value="Banquet">Banquet Style</option>
-                                         </select>
-                                       </div>
-
-                                      <div class="form-group col-md-6">
-                                        <label for="organizer">Title</label>
-                                        <input type="text" class="form-control" id="title" placeholder="Title"  name="r-title" value ={{r.title}}>
-                                      </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="organizer">Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="Title"  name="r-title" value ={{r.title}}>
+                                  </div>
 
                                       <div class="form-group col-md-6">
                                         <label for="organizer">Date</label>
                                         <input type="date" class="form-control" id="resDate" placeholder="date"  name="r-resDate" value ={{r.resDate}}>
                                       </div>
 
-                                      <div class="form-group col-md-6">
-                                        <label for="title">Time</label>
-                                          <select name="r-resTime" id="time" class="form-control">
-                                            <option  > {{r.resTime}}</option>
-                                            <option value="09:00-12:00">09:00-12:00</option>
-                                            <option value="13:00-17:00">13:00-17:00</option>
-                                            <option value="18:00-22:00">18:00-22:00</option>
-                                          </select>
-                                      </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="title">Time</label>
+                                      <select name="r-resTime" id="time" class="form-control">
+                                        <option  > {{r.resTime}}</option>
+                                        <option value="09:00-12:00">09:00-12:00</option>
+                                        <option value="13:00-17:00">13:00-17:00</option>
+                                        <option value="18:00-22:00">18:00-22:00</option>
+                                      </select>
+                                  </div>
 
                                   <div class="col-12" id="startup-tab-1">
-                                        </div>
-                                    </div>
                                   </div>
                                 </div>
-                                <div class="modal-footer">
-                                    <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
-                                    <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
-                                </div>
                               </div>
-                            </form>
                             </div>
-                          </div>
-                          
-        
-                          <!-- Modal DELETE-->
-                          <div class="modal fade" id="exampleModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                              <div class="modal-content">
-                                <div class="modal-header" style="background-color:#134f5c">
-                                  <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; 
-                                  font-size: 20px;">DELETE RECORD</h5>
-                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                                <form id="deleteForm" method="post" >
-                                {% csrf_token %} 
-                                <div class="modal-body">                       
-                                  <input type="text" name="res-resId" value = {{r.resId}} hidden>
+
+                            <div class="modal-footer">
+                              <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
+                              <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
+                            </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <!-- Modal DELETE-->
+                  <div class="modal fade" id="exampleModal-{{r.resId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#134f5c">
+                          <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">
+                            DELETE RECORD
+                          </h5>
+                                  
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+
+                        <form id="deleteForm" method="post" >
+                          {% csrf_token %} 
+                          <div class="modal-body">                       
+                            <input type="text" name="res-resId" value = {{r.resId}} hidden>
                                   Are you sure you want to delete this record?
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
-                                  <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
-                                </div>
-                              </form>
-                              </div>
-                            </div>
                           </div>
-                        {% endfor %}
-                    </tbody>
-                </table>
-              </div>
-              <div>
-                        </div>
+                                
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                            <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+                  </div>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{% static 'assets2/js/scripts.js' %}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="{% static 'assets2/demo/chart-area-demo.js' %}"></script>
-        <script src="{% static 'assets2/demo/chart-bar-demo.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="{% static 'assets2/js/datatables-simple-demo.js' %}"></script>
-    </body>
+              
+            <div>
+            </div>
+          </div>
+        </main>
+                
+        <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+              <div class="text-muted">Copyright &copy; Your Website 2021</div>
+              <div>
+                <a href="#">Privacy Policy</a>
+                &middot;
+                <a href="#">Terms &amp; Conditions</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets2/js/scripts.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'assets2/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'assets2/demo/chart-bar-demo.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="{% static 'assets2/js/datatables-simple-demo.js' %}"></script>
+    <!--datatables-->
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#reservedDatatable').DataTable({     
+          "aLengthMenu": [[3, 5, 10, 25, -1], [3, 5, 10, 25, "All"]],
+            "iDisplayLength": 5,
+    
+             'order': [[2, 'asc' ]], 
+           } 
+        );
+      } );
+    </script>
+  </body>
 </html>
