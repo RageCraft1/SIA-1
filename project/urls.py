@@ -44,7 +44,7 @@ urlpatterns = [
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
     #dashboard
-    path('dashboard/',views.dashboard, name="dashboard"),
+    path('dashboard',views.dashboard, name="dashboard"),
 
 ]
 if settings.DEBUG:
