@@ -181,7 +181,6 @@ class lobbyView(View):
 
         return redirect('lobbyView')
 
-<<<<<<< HEAD
 
 #Edit Profile
 class editProfile(View):
@@ -245,7 +244,6 @@ class profile(View):
 
         return redirect('profile')
         
-=======
 def image_upload_view(request):
     """Process images uploaded by users"""
     if request.method == 'POST':
