@@ -168,13 +168,17 @@
                           <input type="text" name="rt-roomId" value = {{rt.roomId}} hidden>
                           <div class="form-row">
                             <div class="form-group col-md-6">
+                              <label for="organizer">Room Type</label>
+                              <input type="text" class="form-control" id="roomtype" placeholder="Title"  name="rt-roomtype" value ={{rt.roomtype}}>
+                            </div>
+                            <!--div class="form-group col-md-6">
                               <select name="rt-roomtype" id="roomId-roomtype" class="form-control"> 
                                 <option value="">Room Name</option>
                                 {% for rt in room %}
                                   <option value="{{rt.roomId}}">{{rt.roomtype}}</option>											
                                 {% endfor %}
                               </select>
-                            </div>
+                            </div-->
 
                             <div class="form-group col-md-6">
                               <label for="organizer">Image</label>
