@@ -130,11 +130,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  {% for b in book %}
+                  {% for r in reservation %}
                   <tr>
-                    <td>{{b.availRooms.availRooms}}</td>
-                    <td>{{b.bRoom}}</td>
-                    <td>{{b.numBook}}</td>
+                    <td>{{r.availRooms}}</td>
+                    <td>{{r.resId}}</td>
+                    <td>{{r.resDate}}</td>
                     <td><a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{r.resId}}">VIEW</a>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{r.resId}}">
                       DELETE
