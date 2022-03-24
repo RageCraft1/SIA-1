@@ -1,6 +1,9 @@
+from xml.dom.minidom import Document
 from django.urls import path
 from .import views
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'project'
 
@@ -34,11 +37,15 @@ urlpatterns = [
 
     #Profile setup
     path('profile/',views.profile, name="profile"),
+    path('edit-profile/',views.editProfile, name="edit-profile"),
 
     #settings
     path('settings/',views.settings, name="settings"),
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
     #dashboard
-    path('dashboard/',views.dashboard, name="dashboard")
+    path('dashboard/',views.dashboard, name="dashboard"),
+
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
