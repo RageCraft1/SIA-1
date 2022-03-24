@@ -30,6 +30,7 @@
         <!--Main Body for the card-->
         <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
             <div class="card h-100">
+                {% csrf_token %}
                 <div class="card-body" style="background-color: #134f5c;">
                     <!--Personal Details-->
                     <div class="row gutters">
@@ -37,28 +38,29 @@
                             <h6 class="mb-2">Personal Details</h6>
                                 <a  href="../edit-profile" style="float:right ;" >Edit</a>
                         </div>
+                      
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="fullName">First Name</label>
-                                <input type="text" class="form-control" id="fullName" placeholder="{{ request.user }}">
+                                <input type="text" class="form-control" id="name"  placeholder="{{ request.user }}"readonly>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="fullName">Last Name</label>
-                                <input type="text" class="form-control" id="fullName" placeholder="{{ request.user }}">
+                                <input type="text" class="form-control" name=" p-lastname" id="lastname" placeholder="{{ p.lastname}}"readonly>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="eMail">Email</label>
-                                <input type="email" class="form-control" id="eMail" placeholder="{{ request.user.email }}">
+                                <input type="email" class="form-control" id="email" name="p-email" placeholder="{{ request.user.email }}"readonly>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone" placeholder="Enter phone number">
+                                <input type="number" class="form-control" id="phone" name="p-phone_number" placeholder="{{ p.phone_number}}"readonly>
                             </div>
                         </div>
                         
@@ -72,17 +74,17 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="Street">Street</label>
-                                <input type="name" class="form-control" id="Street" placeholder="Enter Street">
+                                <input type="name" class="form-control" id="street" name="p-street" placeholder="{{p.street}}"readonly>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                             <div class="form-group">
                                 <label for="ciTy">City</label>
-                                <input type="name" class="form-control" id="ciTy" placeholder="Enter City">
+                                <input type="name" class="form-control" id="city" name ="p-city"placeholder="{{p.city}}"readonly>
                             </div>
                         </div>
                         
-                        
+                      
                     <!--End of ADdress-->
                    
                 </div>
