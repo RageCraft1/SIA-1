@@ -1,9 +1,10 @@
+from xml.dom.minidom import Document
 from django.urls import path
 from .import views
 from django.contrib import admin
-
 from django.conf import settings
 from django.conf.urls.static import static
+
 app_name = 'project'
 
 urlpatterns = [
@@ -17,13 +18,12 @@ urlpatterns = [
 
     #admin
     path('adminSide/', views.adminSide, name ="adminLobby"),
-    path('addrooms/', views.image_upload_view, name = "addrooms"),
-    path('addrooms/',views.addRoomView.as_view(),name="roomView"),
+    path('addrooms/', views.addrooms, name = "addrooms"),
 
     #Basic functions
     path('protocol/',views.protocol),
     path('lobby/',views.lobbyView.as_view(),name="lobbyView"),
-    path('rooms/',views.roomView.as_view(), name="roomView"),
+    path('rooms/',views.rooms),
     path('host-participant/',views.hostParticipant,name="host-participant"),
 
     #Participant forms
@@ -37,14 +37,15 @@ urlpatterns = [
 
     #Profile setup
     path('profile/',views.profile, name="profile"),
+    path('edit-profile/',views.editProfile, name="edit-profile"),
 
     #settings
     path('settings/',views.settings, name="settings"),
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
     #dashboard
-    path('dashboard/',views.dashboard, name="dashboard")
+    path('dashboard',views.dashboard, name="dashboard"),
+
 ]
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

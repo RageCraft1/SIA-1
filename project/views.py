@@ -232,6 +232,9 @@ def reservedinfo(request):
 def profile(request):
     return render(request, 'profilenew.html')
 
+def editProfile(request):
+    return render(request, 'updateProfile.html' )
+
 #Delete a User
 def deleteUser(request):
 	if request.method =='POST':

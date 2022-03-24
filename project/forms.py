@@ -11,6 +11,7 @@ class CreateUserForm(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
+
 class ReservationForm(forms.ModelForm):
     class Meta:
         model = Reservation
@@ -30,5 +31,10 @@ class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
         fields = ('roomtype','image')
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ('user',)
 
 
