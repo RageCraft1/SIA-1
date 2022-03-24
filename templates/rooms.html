@@ -145,7 +145,7 @@
                     <td>{{rt.roomtype}}</td>
                     <td style="text-align:center;"> <img src="{{rt.image.url}}" width="100" height="100"/></td>
                     <td>
-                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{rt.romId}}">VIEW</a>
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{rt.roomId}}">VIEW</a>
                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{rt.roomId}}">
                         DELETE
                       </button>
@@ -166,22 +166,25 @@
                         {% csrf_token %}
                         <div class="modal-body">
                           <input type="text" name="rt-roomId" value = {{rt.roomId}} hidden>
-                          <div class="row">
-                            <div class="form-group" style="margin-left: -300px;">
-                              <select name="i-title" style="width: 700px; height: 30px; border-radius: 3px; box-shadow: inset 0 0 3px #000000;" id="id-title" class="form-control"> 
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <select name="rt-roomtype" id="roomId-roomtype" class="form-control"> 
                                 <option value="">Room Name</option>
                                 {% for rt in room %}
                                   <option value="{{rt.roomId}}">{{rt.roomtype}}</option>											
                                 {% endfor %}
                               </select>
                             </div>
-                          &nbsp;              
-                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="organizer">Image</label>
+                              <img src="{{rt.image.url}}" width="100" height="100"/>
+                            </div>          
                           </div>
                         </div>
-                        <div class="modal-footer">  
-                            <button type="submit" id = "btnUpdate" name = "btnUpdate" class="button">UPDATE</button>                                  
-                            <button type="button" class="button btn-secondary" data-dismiss="modal">CLOSE</button>                          
+                        <div class="modal-footer">
+                          <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
+                          <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
                         </div>
                       </div>
                     </form>
