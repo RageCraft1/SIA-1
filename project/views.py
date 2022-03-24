@@ -8,6 +8,8 @@ from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
+from .models import Room
+from .forms import RoomForm
 
 #Brings User to the landing page
 def index(request):
@@ -103,6 +105,52 @@ class reservationView(View):
 
         return redirect('lobbyView')
 
+class addRoomView(View):
+    def get(self,request):
+        return render(request, 'addrooms.html')
+        
+    def post(self, request):
+        form = RoomForm(request.POST)
+        roomtype=request.POST.get("roomtype")
+        print(roomtype)
+
+        if form.is_valid():
+            roomtype=request.POST.get("roomtype")
+            
+    
+        form=Room(roomtype=roomtype)
+            
+        form.save()
+
+        return redirect('roomView')
+
+class roomView(View):
+    def get(self,request):
+        room = Room.objects.all()
+        context = {
+            'room': room
+        }
+        return render(request,'rooms.html', context)
+        
+    def post(self, request):
+        if request.method == 'POST':
+            if 'btnUpdate' in request.POST:
+                print ('update profile button clicked')
+                rtId=request.POST.get("rt-roomId")
+                roomtype=request.POST.get("rt-roomtype")
+                image=request.POST.get("rt-image")
+                update_image = Room.objects.filter(roomId=rtId).update(roomtype=roomtype)
+                print(update_image)
+                print('profile updated')
+
+            elif 'btnDelete' in request.POST:
+                print('delete button clicked')
+                rtId=request.POST.get("room-id")
+                image=Room.objects.filter(roomId=rtId).delete()
+                print('recorded deleted')
+
+        return redirect('roomView')
+
 #Brings user to the homepage where he can locate most functions
 class lobbyView(View):
     def get(self, request):
@@ -133,6 +181,7 @@ class lobbyView(View):
 
         return redirect('lobbyView')
 
+<<<<<<< HEAD
 
 #Edit Profile
 class editProfile(View):
@@ -196,6 +245,20 @@ class profile(View):
 
         return redirect('profile')
         
+=======
+def image_upload_view(request):
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+        form = RoomForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            # Get the current instance object to display in the template
+            img_obj = form.instance
+            return render(request, 'addrooms.html', {'form': form, 'img_obj': img_obj})
+    else:
+        form = RoomForm()
+    return render(request, 'addrooms.html', {'form': form})
+
 #Brings user to the protocol submit page
 def protocol(request):
     return render(request, 'protocol.html')

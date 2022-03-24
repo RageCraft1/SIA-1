@@ -1,128 +1,241 @@
-{% include 'base.html' %}
-{% load static %}
-{% block content %}
-    <title>Lobby</title>
+{%load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>      
+    <title>Rooms</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-
+    <link href="{% static 'assets2/css/styles.css' %}" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    <style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-      body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-          Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    <style type="text/css">
+      .navbar{
+          background-color: #134f5c;
       }
-
-      .main-container {
-        padding: 30px;
+      .sb-sidenav-menu{
+          background-color: #134f5c ;
       }
-
-      /* HEADING */
-
-      .heading {
-        text-align: center;
+      .nav-item li{
+          background-color: #ce7e00;
       }
+    </style>
+  </head>
+  
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand">
+      <!-- Navbar Brand-->
+       
+      <!-- Sidebar Toggle-->
+      <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" style="background-color:#ce7e00;" href="#!"><i class="fas fa-bars"></i></button>
+            
+      <!-- Navbar Search-->
+      <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group col-md-6">
+          <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+          <!--<button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
+        </div>
+      </form>
+        
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#!">Settings</a></li>
+            <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+              
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="../signin">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+       
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Menu</div>                            
+              <a class="nav-link " href="../dashboard"  >
+                <div class="sb-nav-link-icon" ><i class="fas fa-dashboard"></i></div>
+                Dashboard
+              </a>
+              <a class="nav-link collapsed" href="../lobby"  >
+                <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
+                My Schedule
+              </a>     
+              <a class="nav-link active" href="../rooms">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                Rooms
+              </a>
+              <a class="nav-link collapsed" href="../profile"aria-expanded="false" >
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                Account Profile
+              </a>                                           
+              <a class="nav-link" href="../settings">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                Settings
+              </a>
+              <a class="nav-link" href="../report">
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                Report
+              </a>
+            </div>
+          </div>
+                    
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small" class="hello-msg">{{request.user}}</span>
+          </div>
+        </nav>
+      </div>
+            
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid px-4">
+            {% csrf_token %}
+            <h1 class="mt-4">Room</h1>
+            <div class="card mb-4">
+              <div class="card-header">                          
+                <p align = "right">
+                  <a type = "button" class = "btn btn-warning wave effects" id = "roomId" href ="../addrooms">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                    Add Room
+                  </a>
+                </p>
+              </div>
+                            
+              <table style = 'text-align:center;width:100%' class = "table table-primary table-striped" id="reservedDatatable">
+                <thead>
+                  <tr >
+                    <th scope="col" style = 'text-align:center;'>Room ID</th>
+                    <th scope="col" style = 'text-align:center;'>Room Type</th>
+                    <th scope="col" style = 'text-align:center;'>Image</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                              
+                <tbody>
+                  {% for rt in room %}
+                  <tr>
+                    <td>{{rt.roomId}}</td>
+                    <td>{{rt.roomtype}}</td>
+                    <td style="text-align:center;"> <img src="{{rt.image.url}}" width="100" height="100"/></td>
+                    <td>
+                      <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#newModal-{{rt.roomId}}">VIEW</a>
+                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal-{{rt.roomId}}">
+                        DELETE
+                      </button>
+                    </td>
+                  </tr>
 
-      .heading__title {
-        font-weight: 600;
-      }
+                  <!-- Modal VIEW-->
+                  <div class="modal fade" id="newModal-{{rt.roomId}}" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#134f5c">
+                          <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">VIEW DETAILS</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form id="updateForm" method="post" >
+                        {% csrf_token %}
+                        <div class="modal-body">
+                          <input type="text" name="rt-roomId" value = {{rt.roomId}} hidden>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <select name="rt-roomtype" id="roomId-roomtype" class="form-control"> 
+                                <option value="">Room Name</option>
+                                {% for rt in room %}
+                                  <option value="{{rt.roomId}}">{{rt.roomtype}}</option>											
+                                {% endfor %}
+                              </select>
+                            </div>
 
-      .heading__credits {
-        margin: 10px 0px;
-        color: #888888;
-        font-size: 25px;
-        transition: all 0.5s;
-      }
-
-      .heading__link {
-        text-decoration: none;
-      }
-
-      .heading__credits .heading__link {
-        color: inherit;
-      }
-
-      /* CARDS */
-
-      .cards {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-      }
-
-      .card {
-        margin: 20px;
-        padding: 20px;
-        width: 500px;
-        min-height: 200px;
-        display: grid;
-        grid-template-rows: 20px 50px 1fr 50px;
-        border-radius: 10px;
-        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-        transition: all 0.2s;
-      }
-
-      .card:hover {
-        box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-        transform: scale(1.01);
-      }
-
-      .card__link,
-      .card__exit,
-      .card__icon {
-        position: relative;
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.9);
-      }
-
-      .card__link::after {
-        position: absolute;
-        top: 25px;
-        left: 0;
-        content: "";
-        width: 0%;
-        height: 3px;
-        background-color: rgba(255, 255, 255, 0.6);
-        transition: all 0.5s;
-      }
-
-      .card__link:hover::after {
-        width: 100%;
-      }
-
-      .card__exit {
-        grid-row: 1/2;
-        justify-self: end;
-      }
-
-      .card__icon {
-        grid-row: 2/3;
-        font-size: 30px;
-      }
-
-      .card__title {
-        grid-row: 3/4;
-        font-weight: 400;
-        color: #ffffff;
-      }
-
-      .card__apply {
-        grid-row: 4/5;
-        align-self: center;
-      }
-
-      @media (max-width: 1600px) {
-        .cards {
-          justify-content: center;
-        }
-        .main {
-          background-image: url(..img/ex.jpg);
-        }
-      }
-    </style>  
-    <div id="layoutSidenav_content" style="padding-left: 18%; padding-top: 50px">
-      <main>
+                            <div class="form-group col-md-6">
+                              <label for="organizer">Image</label>
+                              <img src="{{rt.image.url}}" width="100" height="100"/>
+                            </div>          
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" id = "btnUpdate" name = "btnUpdate" class="btn btn-warning waves-effect">UPDATE</button>                             
+                          <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">CLOSE</button>                          
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>
+                
+                <!-- Modal DELETE-->
+                <div class="modal fade" id="exampleModal-{{rt.roomId}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <<div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header" style="background-color:#134f5c">
+                          <h5 class="modal-title w-100 text-center", style="color: #f0ad4e; font-weight: bold; font-family:'Montserrat'; font-size: 20px;">
+                            DELETE RECORD</h5>
+                          <!--<h5 class="modal-title" id="exampleModalLabel">DELETE RECORD</h5>-->
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <form id="deleteForm" method="post" >
+                        {% csrf_token %} 
+                        <div class="modal-body">                       
+                          <input type="text" name="room-id" value = {{rt.roomId}} hidden>
+                          Are you sure you want to delete this record?
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">NO</button>
+                          <button type="submit" id = "btnDelete" name = "btnDelete" class="btn btn-primary">YES</button>
+                        </div>
+                      </div>
+                    </form>
+                    </div>
+                  </div>   
+                {% endfor %}   
+                </tbody>
+              </table>
+            </div>
+              
+            <div>
+            </div>
+          </div>
+        </main>
+              
+      <!--main>
         <div class="container-fluid px-4">
           <h1 class="mt-4">Rooms</h1>
+          <p align = "right">
+            <a type = "button" class = "btn btn-warning wave effects" id = "resId" href="../addrooms">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+              Add Room
+            </a>
+          </p>
           <div class="row row-cols-1 row-cols-md-2">
             <div class="col mb-4">
               <h5 class="card-title" >Hollow Square Style</h5>
@@ -171,8 +284,20 @@
                 </div>
             </div>
           </div>
+          <div class="col mb-4">
+            <select name="r-roomtype" class="select">
+              {% for r in room %}
+              <option value="{{r.roomId}}" {% if reservation.title.roomtype == r.roomtype %} selected="selected"{% endif %}>{{r.roomId}}/{{r.roomtype}}</option>											
+            {% endfor %}
+            </select>
+            <div><a href="../reservation"class="card" style="background-image: url('media/media/rj1.jpg'); height:fit-content;"></a>
+              <div class="card-body">
+              </div>
+          </div>
         </div>
-      </main>
+        </div>
+        </div>
+      </main-->
 
       <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid px-4">
@@ -194,4 +319,5 @@
         <script src="{% static 'assets2/demo/chart-bar-demo.js' %}"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="{% static 'assets2/js/datatables-simple-demo.js' %}"></script>
-{% endblock %}
+  </body>
+</html>
