@@ -29,6 +29,6 @@ class BookForm(forms.ModelForm):
 class RoomForm(forms.ModelForm):
     class Meta:
         model = Room
-        fields = ('roomtype',)
+        fields = ('roomtype','image')
 
 
