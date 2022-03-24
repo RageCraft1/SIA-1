@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6j)ha!wet@^n=(*8*77s0ikkd2wvf@$&0=-9e^w2g17_pu=i7z
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -135,17 +136,24 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/images/'
+STATICFILES_DIRS =(
+    os.path.join(BASE_DIR,'static'),
+)
 
-# Base url to serve media files
-MEDIA_URL = '/media/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+MEDIA_URL= '/images/'
+
+#MEDIA_ROOT= os.path.join(BASE_DIR, 'static/images')
+
+#MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-STATICFILES_DIRS =(
-    os.path.join(BASE_DIR,'static'),
-)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
