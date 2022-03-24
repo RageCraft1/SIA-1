@@ -1,12 +1,15 @@
 from distutils.command.upload import upload
+import email
 from django.db import models
+from django.contrib.auth.models import User
+
 
 # Create your models here.
 class Reservation(models.Model):
     resId = models.AutoField(primary_key = True)
     availRooms = models.CharField(max_length=50, null=True)
     title = models.CharField(max_length=50, null=True)
-    resDate = models.DateField(blank=True, null=True)
+    resDate = models.CharField(max_length=50, null=True)
     resTime = models.CharField(max_length=50, null=True)
     class meta:
         db_table='Reservation'
@@ -30,3 +33,16 @@ class Room(models.Model):
     ) 
     class meta:
         db_table="Room"
+
+class Profile(models.Model):
+    userId = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    lastname = models.CharField(max_length=50, null=True)
+    email = models.EmailField(max_length=50, null=True)
+    phone_number = models.IntegerField()
+    profpic = models.ImageField(null=True, blank=True, upload_to="images/")
+    street = models.CharField(max_length=50, null=True)
+    city = models.CharField(max_length=50, null=True)
+    about =models.TextField(blank=True, null=True)
+    class meta:
+        db_table ="Profile"
