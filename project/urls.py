@@ -18,12 +18,12 @@ urlpatterns = [
 
     #admin
     path('adminSide/', views.adminSide, name ="adminLobby"),
-    path('addrooms/', views.addrooms, name = "addrooms"),
+    path('addrooms/', views.image_upload_view, name = "addrooms"),
 
     #Basic functions
     path('protocol/',views.protocol),
     path('lobby/',views.lobbyView.as_view(),name="lobbyView"),
-    path('rooms/',views.rooms),
+    path('rooms/',views.roomView.as_view(), name="roomView"),
     path('host-participant/',views.hostParticipant,name="host-participant"),
 
     #Participant forms
@@ -44,7 +44,7 @@ urlpatterns = [
     #deleteUser
     path('delete/',views.deleteUser, name="delete"),
     #dashboard
-    path('dashboard',views.dashboard, name="dashboard"),
+    path('dashboard/',views.dashboard, name="dashboard"),
 
 ]
 if settings.DEBUG:
