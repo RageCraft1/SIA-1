@@ -8,7 +8,7 @@ from django.conf.urls.static import static
 app_name = 'project'
 
 urlpatterns = [
-    #path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', views.index, name="home"),
 
     #User Sign in and Out

@@ -45,11 +45,9 @@ def signin(request):
         password1 = request.POST.get('password')
 
         user = authenticate(username=username, password = password1)
-        if user.is_active:
+        if user is not None:
             login(request,user)
             return redirect('lobbyView')
-        if user.is_staff:
-            login(request,user)
         else:   
             messages.info(request, 'Username or Password is incorrect!')
     context = {}
