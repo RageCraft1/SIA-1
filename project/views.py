@@ -53,22 +53,6 @@ def signin(request):
     context = {}
     return render(request, 'signin.html',context)
 
-
-#Admin Sign in
-#def signin(request):
-#    if request.method =='POST':
-#       username = request.POST.get('username')
-#       password1 = request.POST.get('password')
-
-#        user = authenticate(username=username, password = password1)
-#        if user.is_staff:
-#              login(request,user)
-#              return redirect('adminLobby')
-#        else:   
-#            messages.info(request, 'Username or Password is incorrect!')
-#    context = {}
-#    return render(request, 'signin.html',context)
-
 #Logs User Out
 def logOutUser(request):
 	logout(request)
@@ -179,69 +163,7 @@ class lobbyView(View):
 
         return redirect('lobbyView')
 
-
-#Edit Profile
-class editProfile(View):
-    def get(self,request):
-        return render(request, 'updateProfile.html')
-        
-    def post(self, request):
-        form = ProfileForm(request.POST)
-        lastname=request.POST.get("lastname")
-        print(lastname)
-        email=request.POST.get("email")
-        print(email)
-        phone_number=request.POST.get("phone_number")
-        print(phone_number)
-        street=request.POST.get("street")
-        print(street)
-        city=request.POST.get("city")
-        print(city)
-
-        if form.is_valid():
-            lastname=request.POST.get("lastname")
-            email=request.POST.get("email")
-            phone_number=request.POST.get("phone_number")
-            street=request.POST.get("street")
-            city=request.POST.get("city")
-    
-        form=Profile(lastname=lastname, email=email, phone_number=phone_number,street=street,city=city)
-            
-        form.save()
-
-        return redirect('profile')
-
-class profile(View):
-    def get(self, request):
-        profile = Profile.objects.all()
-        context = {
-            'profile': profile
-        }
-        return render(request,'profile.html', context)
-
-    def post(self, request):
-        if request.method == 'POST':
-            if 'btnUpdate' in request.POST:
-                print ('update profile button clicked')
-                user = request.POST.get("p-userId")
-                lastname=request.POST.get("p-lastname")
-                email=request.POST.get("p-email")
-                phone_number=request.POST.get("p-phone_number")
-                street=request.POST.get("p-street")
-                city=request.POST.get("p-city")
-                update_Profile = Profile.objects.filter(userId=user).update(users=user,lastname=lastname, email=email, phone_number=phone_number,
-                street=street,city=city)
-                print(update_Profile)
-
-            elif 'btnDelete' in request.POST:
-                print('delete button clicked')
-                
-                user=request.POST.get("p-userId")
-                prof=Profile.objects.filter(userId=user).delete()
-                print('recorded deleted')
-
-        return redirect('profile')
-        
+     
 def image_upload_view(request):
     """Process images uploaded by users"""
     if request.method == 'POST':
