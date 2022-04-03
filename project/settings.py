@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+    "whitenoise.runserver_nostatic", # To ease serving static files via Azure
     'project',
 ]
 
@@ -136,9 +136,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS =(
-    os.path.join(BASE_DIR,'static'),
-)
+#STATICFILES_DIRS =(
+#    os.path.join(BASE_DIR,'static'),
+#)
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL= '/images/'
@@ -147,6 +147,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Path where media is stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 
 
 # Default primary key field type
