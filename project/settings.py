@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6j)ha!wet@^n=(*8*77s0ikkd2wvf@$&0=-9e^w2g17_pu=i7z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['group2-coreconferenceroomreservationsystem.azurewebsites.net']
 
 
 # Application definition
@@ -44,7 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-   
+     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -86,7 +86,7 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
-            'init_command': "SET sql_mode = 'STRICT_TRANS_TABLES'",
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         },
     }
 }
@@ -134,7 +134,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS =(
     os.path.join(BASE_DIR,'static'),
@@ -144,6 +144,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 MEDIA_URL= '/images/'
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 #MEDIA_ROOT= os.path.join(BASE_DIR, 'static/images')
 
