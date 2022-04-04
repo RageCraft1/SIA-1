@@ -78,13 +78,15 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default':{
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'coreconferencedb',
-        'USER': 'sia@coreconferencedb',
-        'PASSWORD': 'IT342core',
-        'HOST': 'coreconferencedb.postgres.database.azure.com',
-        'PORT': '5432',
-        'OPTIONS':{"sslmode": "require"},
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'conference',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+        },
     }
 }
 # DATABASES = {
