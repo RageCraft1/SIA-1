@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/f39d669d-939c-48ef-b2e2-6f7c746a28d7/resourceGroups/G2_Group2/providers/Microsoft.Web/sites/Group2-CoreConferenceRoomReservationSystem",
+    "appService.deploySubpath": "."
+}
