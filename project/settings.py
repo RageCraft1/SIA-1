@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'coferencedb',
+        'NAME': 'conferencedata',
         'USER': 'core_admin',
         'PASSWORD': 'IT342sia',
         'HOST': 'coferencedb.mysql.database.azure.com',
