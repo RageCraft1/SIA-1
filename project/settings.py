@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-6j)ha!wet@^n=(*8*77s0ikkd2wvf@$&0=-9e^w2g17_pu=i7z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['group2-coreconferenceroomreservationsystem.azurewebsites.net']
 
 
