@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'it342-dbstudent-Core',
+        'NAME': 'it342-dbstudent-core',
         'USER': 'core_admin',
         'PASSWORD': 'P@ssw0rd',
         'HOST': 'coferencedb.mysql.database.azure.com',
