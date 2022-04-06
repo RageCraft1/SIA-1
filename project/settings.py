@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # "whitenoise.runserver_nostatic", # To ease serving static files via Azure
     'project',
-    'django_extensions'
 ]
 
 MIDDLEWARE = [
