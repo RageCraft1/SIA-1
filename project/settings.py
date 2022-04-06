@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-6j)ha!wet@^n=(*8*77s0ikkd2wvf@$&0=-9e^w2g17_pu=i7z
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['group2-coreconferenceroomreservationsystem.azurewebsites.net']
+ALLOWED_HOSTS = ['group2-core.azurewebsites.net']
 
 
 # Application definition
@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "whitenoise.runserver_nostatic", # To ease serving static files via Azure
+    # "whitenoise.runserver_nostatic", # To ease serving static files via Azure
     'project',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
@@ -79,9 +80,9 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'conferencedata',
+        'NAME': 'it342-dbstudent',
         'USER': 'core_admin',
-        'PASSWORD': 'IT342sia',
+        'PASSWORD': 'P@ssw0rd',
         'HOST': 'coferencedb.mysql.database.azure.com',
         'PORT': '3306',
         'OPTIONS': {
@@ -141,7 +142,7 @@ STATICFILES_DIRS =(
    os.path.join(BASE_DIR,'static'),
 )
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR/'staticfiles'
 MEDIA_URL= '/images/'
 
 #STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
