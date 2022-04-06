@@ -79,16 +79,13 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default':{
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'it342-dbstudent-core',
         'USER': 'core_admin',
         'PASSWORD': 'P@ssw0rd',
-        'HOST': 'coferencedb.mysql.database.azure.com',
+        'HOST': 'it342-dbstudent-core.postgres.database.azure.com',
         'PORT': '3306',
-        'OPTIONS': {
-        'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        'ssl': True
-        }
+        'OPTIONS': {"sslmode":"required"},
     }
 }
 
