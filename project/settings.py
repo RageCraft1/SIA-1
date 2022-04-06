@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default':{
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'it342-dbstudent-core',
+        'NAME': 'conference',
         'USER': 'core_admin@it342-dbstudent-core',
         'PASSWORD': 'P@ssw0rd',
         'HOST': 'it342-dbstudent-core.postgres.database.azure.com',
